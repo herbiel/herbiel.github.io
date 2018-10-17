@@ -13,6 +13,17 @@
     
 
     
+        <meta name="description" content="Deepin下部署hexo博客
+1.安装必要的软件包
+apt-get install npm
+新建blog目录，用来存储博客的相关文件
+mkdir blog 
+进入blog目录下
+cd blog
+npm instlal -g hexo-cli
+npm install hexo
+npm install"/>
+    
 
     <!--Author-->
     
@@ -21,10 +32,21 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Devops"/>
+        <meta property="og:title" content="deepin-hexo博客搭建"/>
     
 
     <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Deepin下部署hexo博客
+1.安装必要的软件包
+apt-get install npm
+新建blog目录，用来存储博客的相关文件
+mkdir blog 
+进入blog目录下
+cd blog
+npm instlal -g hexo-cli
+npm install hexo
+npm install"/>
     
 
     <!--Open Graph Site Name-->
@@ -32,7 +54,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website"/>
+        <meta property="og:type" content="article"/>
     
 
     <!--Page Cover-->
@@ -51,7 +73,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2018/10 - Devops</title>
+    <title>deepin-hexo博客搭建 - Devops</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -153,153 +175,110 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>2018/10</h1>
+                <div class="post-heading">
+                    <h1>deepin-hexo博客搭建</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-10-17
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/其他/">#其他</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2018/10/17/deepin-hexo博客搭建/">
-        <h1 class="post-title archive">
-            deepin-hexo博客搭建
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2018/10/17/VOIP-简述/">
-        <h1 class="post-title archive">
-            VOIP-简述
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Deepin下部署hexo博客</p>
+<p>1.安装必要的软件包</p>
+<pre><code>apt-get install npm
+</code></pre><p>新建blog目录，用来存储博客的相关文件</p>
+<pre><code>mkdir blog 
+</code></pre><p>进入blog目录下</p>
+<pre><code>cd blog
+npm instlal -g hexo-cli
+npm install hexo
+npm install hexo-deplopyer-git
+</code></pre><p>初始化hexo</p>
+<p><code>hexo init</code></p>
+<p>2.设置主题</p>
+<p>下载主题</p>
+<pre><code>git clone https://github.com/klugjo/hexo-theme-clean-blog.git themes/clean-blog
+</code></pre><p>设置主题</p>
+<pre><code>vi _config.yml
+</code></pre><p><img src="/images/1539771711665.png" alt="1539771711665"><br>3.设置标签和分类<br>    hexo new page tags</p>
+<pre><code>hexo new page categories
+</code></pre><p>会在以下目录生产tags和categories目录和对应的index.md</p>
+<p><img src="/images/1539771711665.png" alt="1539771711665"><br>修改两个index.md<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: categories</span><br><span class="line">date: 2018-10-17 15:56:00</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line"></span><br><span class="line">title: tags</span><br><span class="line">date: 2018-10-17 16:22:20</span><br><span class="line">type: &quot;tags&quot;</span><br></pre></td></tr></table></figure></p>
+<p>检查主题配置文件里面是否开启了标签和分类<br><img src="/images/1539771905072.png" alt="1539771905072"></p>
+<p>发布新文章的时候要引用tags和categories</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">title: Tcp-three</span><br><span class="line">date: 2018-10-17 16:23:54</span><br><span class="line">tags:</span><br><span class="line">- NETWORK</span><br><span class="line">categories: </span><br><span class="line">- web前端</span><br></pre></td></tr></table></figure>
+<p>4.部署到github上</p>
+<p>生成ssh公钥<br><code>ssh-keygen -t rsa -C &quot;邮箱&quot;
+    cat .ssh/id_rsa.pub</code><br>在github上设置ssh配置</p>
+<p>把cat的结果贴到github这里<br><img src="/images/1539772464241.png" alt="1539772464241"></p>
+<p>配置相关信息<br>vi _config.yml</p>
+<p><img src="/images/1539773141851.png" alt="1539773141851"></p>
+<p>运行hexo d </p>
+<p>5.hexo 常用命令</p>
+<p>查看帮助 <code>hexo --help</code></p>
+<p><code>hexo g</code> 生成静态文件</p>
+<p><code>hexo clean</code> 清理生成的静态文件</p>
+<p><code>hexo new  &quot;文章名&quot;</code> 新建文章</p>
+<p><code>hexo d</code>部署</p>
+<p><code>hexo s</code>本地服务器模拟，访问localhost:4000可以看到效果</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/2018/10/17/企业VPN网络-简述/">
-        <h1 class="post-title archive">
-            企业VPN网络-简述
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
             
-                <div class="post-preview">
-    <a href="/2018/10/17/证书申请与配置/">
-        <h1 class="post-title archive">
-            ocserv证书申请与配置
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/10/17/Docker-Django项目实例/">
-        <h1 class="post-title archive">
-            Docker-Django项目实例
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/10/17/Docker-常用命令/">
-        <h1 class="post-title archive">
-            Docker-常用命令
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/10/17/Iptables-详解/">
-        <h1 class="post-title archive">
-            Iptables-详解
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/10/17/Tcp-three/">
-        <h1 class="post-title archive">
-            Tcp-three
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/10/17/Linux-install/">
-        <h1 class="post-title archive">
-            Linux-install
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />
