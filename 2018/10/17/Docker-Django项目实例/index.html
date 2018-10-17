@@ -13,6 +13,14 @@
     
 
     
+        <meta name="description" content="以alex的crazyeye的django堡垒机应用来用django部署网页部分 
+1.基础文件和准备 
+基础镜像python:2.7  mysql:5.6 centos:7 
+crazyEye的文件包 
+创建mysql存储卷 
+docker create volume mysql_volume 
+"/>
+    
 
     <!--Author-->
     
@@ -25,6 +33,14 @@
     
 
     <!--Open Graph Description-->
+    
+        <meta property="og:description" content="以alex的crazyeye的django堡垒机应用来用django部署网页部分 
+1.基础文件和准备 
+基础镜像python:2.7  mysql:5.6 centos:7 
+crazyEye的文件包 
+创建mysql存储卷 
+docker create volume mysql_volume 
+"/>
     
 
     <!--Open Graph Site Name-->
@@ -183,13 +199,156 @@
 
             <!-- Tags and categories -->
            
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/vitural/">#vitural</a> <a href="/tags/Docker/">#Docker</a> <a href="/tags/Linux/">#Linux</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
 
             <!-- Gallery -->
             
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                
+                <p>以alex的crazyeye的django堡垒机应用来用django部署网页部分 </p>
+<p>1.基础文件和准备 </p>
+<p>基础镜像python:2.7  mysql:5.6 centos:7 </p>
+<p>crazyEye的文件包 </p>
+<p>创建mysql存储卷 </p>
+<p>docker create volume mysql_volume </p>
+<p>创建环境网络  </p>
+<p>docker create network crazyeye </p>
+<p>2.Django镜像制作 </p>
+<p>pip.conf 是pip加速配置文件 </p>
+<p>Dockerfile </p>
+<p>#Django and Uwsgi </p>
+<p>From python:2.7 </p>
+<p>COPY CrazyEye /home/CrazyEye </p>
+<p>COPY pip.conf /etc/ </p>
+<p>WORKDIR /home/CrazyEye </p>
+<p>RUN pip install -r requirements.txt </p>
+<p>EXPOSE 8001 </p>
+<p>CMD [“/bin/sh”,”run.sh”] </p>
+<p>[root@crazyeye django]# cat Dockerfile  </p>
+<p>#Django and Uwsgi </p>
+<p>From python:2.7 </p>
+<p>COPY CrazyEye /home/CrazyEye </p>
+<p>COPY pip.conf /etc/ </p>
+<p>WORKDIR /home/CrazyEye </p>
+<p>RUN pip install -r requirements.txt </p>
+<p>EXPOSE 8001 </p>
+<p>CMD [“/bin/sh”,”run.sh”] </p>
+<p>建立django镜像</p>
+<pre><code>docker build -t django:v1 . 
+</code></pre><p>3.nginx镜像制作 </p>
+<p>需要的软件包 </p>
+<p>Dockerfile </p>
+<p>FROM centos:7     </p>
+<p>ENV TIME_ZOME Asia/Shanghai     </p>
+<p>RUN yum -y install gcc gcc-c++ make openssl-devel pcre-devel     </p>
+<p>ADD nginx-1.12.1.tar.gz /tmp     </p>
+<p>RUN cd /tmp/nginx-1.12.1 &amp;&amp; \     </p>
+<pre><code>./configure --prefix=/usr/local/nginx &amp;&amp; \     
+
+make -j 2 &amp;&amp; \     
+
+make install     
+</code></pre><p>RUN rm -rf /tmp/nginx* &amp;&amp; yum clean all &amp;&amp; \     </p>
+<pre><code>echo &quot;${TIME_ZOME}&quot; &gt; /etc/timezone &amp;&amp; \     
+
+ln -sf /usr/share/zoneinfo/${TIME_ZOME} /etc/localtime     
+</code></pre><p>COPY nginx.conf /usr/local/nginx/conf/     </p>
+<p>COPY CrazyEye /var/www/CrazyEye     </p>
+<p>WORKDIR /usr/local/nginx/     </p>
+<p>CMD [“./sbin/nginx”,”-g”,”daemon off;”]     </p>
+<p>nginx.conf     </p>
+<p>worker_processes  1;         </p>
+<p>events {         </p>
+<pre><code>worker_connections  1024;         
+</code></pre><p>}         </p>
+<p>http {         </p>
+<pre><code>include       mime.types;         
+
+default_type  application/octet-stream;         
+
+sendfile        on;         
+
+keepalive_timeout  65;         
+
+upstream django {         
+
+}         
+
+server {         
+
+listen      8000;         
+
+charset     utf-8;         
+
+location /static {         
+
+            alias /var/www/CrazyEye/statics;         
+
+}         
+
+location / {         
+
+    uwsgi_pass  django;         
+
+    include     /var/www/CrazyEye/uwsgi_params;         
+
+}         
+
+}         
+
+server {         
+
+    listen       80;         
+
+    server_name  localhost;         
+
+    location / {         
+
+        root   html;         
+
+        index  index.html index.htm;         
+
+    }         
+
+    error_page   500 502 503 504  /50x.html;         
+
+    location = /50x.html {         
+
+        root   html;         
+
+    }         
+
+}         
+</code></pre><p>}         </p>
+<p>建立nginx镜像</p>
+<pre><code>docker build -t nginx:v1 .
+</code></pre><p>4.数据库mysql5.6     </p>
+<p>使用官方镜像，但是要使用永久数据存储，初始化一些变量root密码等     </p>
+<pre><code>docker run -itd  --name mysql -vmysql-volume:/var/lib/mysql -p3306:3306 -e MYSQL_ROOT_PASSWORD=test123 mysql --character-set-server=utf8     
+</code></pre><p>创建数据库 </p>
+<pre><code>docker exec myslq -c sh &quot;create database crazyeye&quot; 
+</code></pre><p>5.运行容器 </p>
+<pre><code>docker run -itd --name mysql --mount src=mysql_volume,dst=/var/lib/mysql --network django -p3306:3306 mysql:5.6      
+
+  docker run -itd --name django --network django django:v1     
+
+  docker run -itd --name nginx --network django -p8000:8000 nginx:v1     
+</code></pre><p>访问nginx的8000网站测试</p>
+
 
                 
             </div>
