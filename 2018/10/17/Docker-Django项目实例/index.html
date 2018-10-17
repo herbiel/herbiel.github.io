@@ -230,6 +230,7 @@ docker create volume mysql_volume
 <p>2.Django镜像制作 </p>
 <p>pip.conf 是pip加速配置文件 </p>
 <p>Dockerfile </p>
+<p>‘’’</p>
 <p>#Django and Uwsgi </p>
 <p>From python:2.7 </p>
 <p>COPY CrazyEye /home/CrazyEye </p>
@@ -237,22 +238,11 @@ docker create volume mysql_volume
 <p>WORKDIR /home/CrazyEye </p>
 <p>RUN pip install -r requirements.txt </p>
 <p>EXPOSE 8001 </p>
-<p>CMD [“/bin/sh”,”run.sh”] </p>
-<p>[root@crazyeye django]# cat Dockerfile  </p>
-<p>#Django and Uwsgi </p>
-<p>From python:2.7 </p>
-<p>COPY CrazyEye /home/CrazyEye </p>
-<p>COPY pip.conf /etc/ </p>
-<p>WORKDIR /home/CrazyEye </p>
-<p>RUN pip install -r requirements.txt </p>
-<p>EXPOSE 8001 </p>
-<p>CMD [“/bin/sh”,”run.sh”] </p>
-<p>建立django镜像</p>
+<p>CMD [“/bin/sh”,”run.sh”]<br>‘’’<br>建立django镜像</p>
 <pre><code>docker build -t django:v1 . 
 </code></pre><p>3.nginx镜像制作 </p>
 <p>需要的软件包 </p>
-<p>Dockerfile </p>
-<p>FROM centos:7     </p>
+<p>Dockerfile<br>‘’’<br>FROM centos:7     </p>
 <p>ENV TIME_ZOME Asia/Shanghai     </p>
 <p>RUN yum -y install gcc gcc-c++ make openssl-devel pcre-devel     </p>
 <p>ADD nginx-1.12.1.tar.gz /tmp     </p>
@@ -269,9 +259,7 @@ ln -sf /usr/share/zoneinfo/${TIME_ZOME} /etc/localtime
 </code></pre><p>COPY nginx.conf /usr/local/nginx/conf/     </p>
 <p>COPY CrazyEye /var/www/CrazyEye     </p>
 <p>WORKDIR /usr/local/nginx/     </p>
-<p>CMD [“./sbin/nginx”,”-g”,”daemon off;”]     </p>
-<p>nginx.conf     </p>
-<p>worker_processes  1;         </p>
+<p>CMD [“./sbin/nginx”,”-g”,”daemon off;”]<br>‘’’<br>nginx.conf<br>‘’’<br>worker_processes  1;         </p>
 <p>events {         </p>
 <pre><code>worker_connections  1024;         
 </code></pre><p>}         </p>
@@ -333,7 +321,7 @@ server {
     }         
 
 }         
-</code></pre><p>}         </p>
+</code></pre><p>}<br>‘’’</p>
 <p>建立nginx镜像</p>
 <pre><code>docker build -t nginx:v1 .
 </code></pre><p>4.数据库mysql5.6     </p>
