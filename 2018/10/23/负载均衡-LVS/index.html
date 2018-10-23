@@ -13,6 +13,13 @@
     
 
     
+        <meta name="description" content="Linux负载均衡技术-LVS
+负载均衡技术主要有LVS,Nginx,Haproxy,硬件设备F5等
+LVS 全称Linux Virtual server 
+作用：四层负载均衡，主要用于大型web网站的负载均衡,主要用于QPS1万以上。 
+LVS相关术语    
+\1. DS：Director Se"/>
+    
 
     <!--Author-->
     
@@ -21,10 +28,17 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Devops"/>
+        <meta property="og:title" content="负载均衡-LVS"/>
     
 
     <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Linux负载均衡技术-LVS
+负载均衡技术主要有LVS,Nginx,Haproxy,硬件设备F5等
+LVS 全称Linux Virtual server 
+作用：四层负载均衡，主要用于大型web网站的负载均衡,主要用于QPS1万以上。 
+LVS相关术语    
+\1. DS：Director Se"/>
     
 
     <!--Open Graph Site Name-->
@@ -32,7 +46,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website"/>
+        <meta property="og:type" content="article"/>
     
 
     <!--Page Cover-->
@@ -51,7 +65,7 @@
 
     <!-- Title -->
     
-    <title>Devops</title>
+    <title>负载均衡-LVS - Devops</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -154,188 +168,114 @@
 
     <!-- Main Content -->
     <!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Devops</h1>
-                    <hr class="small">
-                    <span class="subheading"></span>
+                <div class="post-heading">
+                    <h1>负载均衡-LVS</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-10-23
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            
-                <div class="post-preview">
-    <a href="/2018/10/23/负载均衡-LVS/">
-        <h2 class="post-title">
-            负载均衡-LVS
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-10-23
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/10/18/Linux-LVM磁盘扩展/">
-        <h2 class="post-title">
-            Linux-LVM磁盘扩展
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-10-18
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/10/17/deepin-hexo博客搭建/">
-        <h2 class="post-title">
-            deepin-hexo博客搭建
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/10/17/VOIP-简述/">
-        <h2 class="post-title">
-            VOIP-简述
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/10/17/企业VPN网络-简述/">
-        <h2 class="post-title">
-            企业VPN网络-简述
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/10/17/证书申请与配置/">
-        <h2 class="post-title">
-            ocserv证书申请与配置
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/10/17/Docker-Django项目实例/">
-        <h2 class="post-title">
-            Docker-Django项目实例
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/10/17/Docker-常用命令/">
-        <h2 class="post-title">
-            Docker-常用命令
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/10/17/Iptables-详解/">
-        <h2 class="post-title">
-            Iptables-详解
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/10/17/Tcp-three/">
-        <h2 class="post-title">
-            Tcp-three
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
-<hr>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Linux/">#Linux</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
             
 
-            <ul class="pager">
-    
-    
-        <li class="next"><a href="/page/2/">Older Posts  &rarr;</a></li>
-    
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Linux负载均衡技术-LVS</p>
+<p>负载均衡技术主要有LVS,Nginx,Haproxy,硬件设备F5等</p>
+<p>LVS 全称Linux Virtual server </p>
+<p>作用：四层负载均衡，主要用于大型web网站的负载均衡,主要用于QPS1万以上。 </p>
+<p>LVS相关术语    </p>
+<p>\1. DS：Director Server。指的是前端负载均衡器节点。</p>
+<p>\2. RS：Real Server。后端真实的工作服务器。</p>
+<p>\3. VIP：向外部直接面向用户请求，作为用户请求的目标的IP地址。</p>
+<p>\4. DIP：Director Server IP，主要用于和内部主机通讯的IP地址。</p>
+<p>\5. RIP：Real Server IP，后端服务器的IP地址。</p>
+<p>\6. CIP：Client IP，访问客户端的IP地址。     </p>
+<p>LVS 三种模式</p>
+<p>NAT DR IP-tun</p>
+<p>NAT模式原理</p>
+<p>LVS-NAT模型的特性 </p>
+<ul>
+<li>RS应该使用私有地址，RS的网关必须指向DIP         </li>
+<li>DIP和RIP必须在同一个网段内         </li>
+<li>请求和响应报文都需要经过Director Server，高负载场景中，Director Server易成为性能瓶颈         </li>
+<li>支持端口映射         </li>
+<li>RS可以使用任意操作系统         </li>
 </ul>
+<p>缺陷：对Director Server压力会比较大，请求和响应都需经过director server </p>
+<p>具体配置</p>
+<p>  服务器         ip                                   角色<br>  DS服务器       192.168.96.140 vip:192.168.96.140    调度服务器<br>  RS1真实服务器    192.168.96.141                       真实服务器<br>  RS2真实服务器    192.168.96.142                       真实服务器</p>
+<p>所有服务器关闭firewalld selinux iptables清空 </p>
+<p>DS上配置 </p>
+<pre><code>yum -y install ipvsadm 
+</code></pre><p>① 开启一个基于80端口的虚拟服务vip，调度方式为wrr     </p>
+<pre><code>ipvsadm -A -t 192.168.1.100:80 -s wrr
+</code></pre><p>② 配置web服务后端real server  为nat工作方式  权重为1 </p>
+<pre><code>ipvsadm -a -t 192.168.1.100:80 -r 192.168.96.141:80 -m -w 1          
+
+ipvsadm -a -t 192.168.1.100:80 -r 192.168.96.142:80 -m -w 1
+</code></pre><p>③ 修改内核配置，开启路由转发          </p>
+<p>vim /etc/sysctl.conf 改一行          </p>
+<p>net.ipv4.ip_forward = 1                     </p>
+<p>sysctl -p 读一些，使其生效      </p>
+<p>两台RS上面配置 </p>
+<p>网关指向DS </p>
+<p>route add default gw 192.168.1.100 </p>
+<p>开启nginx  </p>
+<p>systemctl start nginx </p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
         </div>
     </div>
-</div>
-
-
+</article>
 
     <!-- Footer -->
     <hr />
