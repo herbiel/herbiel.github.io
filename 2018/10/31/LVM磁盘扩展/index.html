@@ -13,6 +13,15 @@
     
 
     
+        <meta name="description" content="Linux磁盘LVM扩展
+虚拟机环境:VMware centos7 6G的硬盘扩展到20G
+1.将Vmware中虚拟机硬盘扩展到20G我这里是已经扩展好了，所以expand是灰色的
+2.centos7系统中格式化新增加的分区
+添加完磁盘状态
+格式化分区
+fdisk /dev/sda
+n //添加新分"/>
+    
 
     <!--Author-->
     
@@ -21,10 +30,19 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="tags"/>
+        <meta property="og:title" content="LVM磁盘扩展"/>
     
 
     <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Linux磁盘LVM扩展
+虚拟机环境:VMware centos7 6G的硬盘扩展到20G
+1.将Vmware中虚拟机硬盘扩展到20G我这里是已经扩展好了，所以expand是灰色的
+2.centos7系统中格式化新增加的分区
+添加完磁盘状态
+格式化分区
+fdisk /dev/sda
+n //添加新分"/>
     
 
     <!--Open Graph Site Name-->
@@ -51,7 +69,7 @@
 
     <!-- Title -->
     
-    <title>tags - Devops</title>
+    <title>LVM磁盘扩展 - Devops</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -153,83 +171,116 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-
-    <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>tags</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                
-                    <div class="post-preview">
-    <a href="/tags/vitural/">
-        <h1 class="post-title archive">
-            vitural
-        </h1>
-    </a>
-</div>
-                
-                    <div class="post-preview">
-    <a href="/tags/Docker/">
-        <h1 class="post-title archive">
-            Docker
-        </h1>
-    </a>
-</div>
-                
-                    <div class="post-preview">
-    <a href="/tags/Linux/">
-        <h1 class="post-title archive">
-            Linux
-        </h1>
-    </a>
-</div>
-                
-                    <div class="post-preview">
-    <a href="/tags/存储/">
-        <h1 class="post-title archive">
-            存储
-        </h1>
-    </a>
-</div>
-                
-                    <div class="post-preview">
-    <a href="/tags/NETWORK/">
-        <h1 class="post-title archive">
-            NETWORK
-        </h1>
-    </a>
-</div>
-                
-                    <div class="post-preview">
-    <a href="/tags/其他/">
-        <h1 class="post-title archive">
-            其他
-        </h1>
-    </a>
-</div>
-                
-                <div class="archive-before-pagination"></div>
+                <div class="post-heading">
+                    <h1>LVM磁盘扩展</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-10-31
+                        
+                    </span>
+                </div>
             </div>
         </div>
     </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
 
 
+<a href="/tags/Linux/">#Linux</a> <a href="/tags/存储/">#存储</a>
 
 
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
 
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Linux磁盘LVM扩展</p>
+<p>虚拟机环境:VMware centos7 6G的硬盘扩展到20G</p>
+<p>1.将Vmware中虚拟机硬盘扩展到20G<br><img src="/images/1539830714783.png" alt="1539830714783"><br>我这里是已经扩展好了，所以expand是灰色的</p>
+<p>2.centos7系统中格式化新增加的分区</p>
+<p>添加完磁盘状态</p>
+<p><img src="/images/1539830790308.png" alt="1539830790308"><br>格式化分区</p>
+<p>fdisk /dev/sda</p>
+<p>n //添加新分区</p>
+<p>p //创建主分区</p>
+<p>3 //分区号3(1、2已经有了)</p>
+<p>按回车 //起始扇区选择默认</p>
+<p>回车默认 //为了不浪费空间</p>
+<p>t //更改分区格式</p>
+<p>8e //更改分区格式为LVM</p>
+<p>p //查看弄好的分区 （blocks为分区大小 单位为kb）</p>
+<p>w //保存分区并退出保存出错，需要重新启动</p>
+<p>WARNING: Re-reading the partition table failed with error 16: 设备或资源忙.</p>
+<p>The kernel still uses the old table. The new table will be used at</p>
+<p>the next reboot or after you run partprobe(8) or kpartx(8)</p>
+<p>正在同步磁盘。</p>
+<p>不重启后面会提示</p>
+<p>vgextend centos /dev/sda3</p>
+<p>  Device /dev/sda3 not found.</p>
+<p>3.LVM命令扩展</p>
+<p>看已有卷组名</p>
+<p>vgdisplay</p>
+<p><img src="/images/1539831092396.png" alt="1539831092396"><br>注意：VG Name后面的即为卷组名，这里的卷组名为rhel，VG Size为卷组大小，等下注意对比</p>
+<p>开始扩展 把/dev/sda3扩展到卷组rhel下</p>
+<p>vgextend centos /dev/sda3 //centos为卷组名</p>
+<p>再查看一下卷组</p>
+<p>vgdisplay</p>
+<p>注意：VG Size的大小已经发生了变化</p>
+<p>查看逻辑卷 然后记住他的LV Path路径</p>
+<p>lvdisplay //这里的LV Path路径为/dev/rhel/root</p>
+<p>给逻辑卷扩容空间</p>
+<p>lvextend /dev/centos/root /dev/sda3  </p>
+<p> //lvextend参数-L是指定大小 如果不输入-L +10G 则默认使用全部空间</p>
+<p>4.需要重新刷新系统分区大小</p>
+<p>使用命令更新系统识别的文件系统大小</p>
+<p>centos7系统:</p>
+<p>xfs_growfs /dev/mapper/centos-root</p>
+<p>centos6系统:</p>
+<p>resize2fs /dev/mapper/centos-root</p>
+<p>df -h查看新的空间</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
 
     <!-- Footer -->
     <hr />
