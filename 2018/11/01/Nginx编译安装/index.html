@@ -13,6 +13,12 @@
     
 
     
+        <meta name="description" content="配置之前请关闭selinux，关闭iptable （线上） 
+1.依赖包安装 
+yum install pcre pcre-devel openssl openssl-devel gcc gcc+ -y 
+2.创建相关用户和文件夹 
+useradd nginx -s /sbin/nologin -M"/>
+    
 
     <!--Author-->
     
@@ -21,10 +27,16 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Devops"/>
+        <meta property="og:title" content="Nginx编译安装"/>
     
 
     <!--Open Graph Description-->
+    
+        <meta property="og:description" content="配置之前请关闭selinux，关闭iptable （线上） 
+1.依赖包安装 
+yum install pcre pcre-devel openssl openssl-devel gcc gcc+ -y 
+2.创建相关用户和文件夹 
+useradd nginx -s /sbin/nologin -M"/>
     
 
     <!--Open Graph Site Name-->
@@ -32,7 +44,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website"/>
+        <meta property="og:type" content="article"/>
     
 
     <!--Page Cover-->
@@ -51,7 +63,7 @@
 
     <!-- Title -->
     
-    <title>Linux - Devops</title>
+    <title>Nginx编译安装 - Devops</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -153,153 +165,101 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>#Linux</h1>
+                <div class="post-heading">
+                    <h1>Nginx编译安装</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-11-01
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Linux/">#Linux</a> <a href="/tags/Web架构/">#Web架构</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2018/11/01/Nginx编译安装/">
-        <h1 class="post-title archive">
-            Nginx编译安装
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-11-01
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2018/11/01/Ocserv可选出口实战/">
-        <h1 class="post-title archive">
-            Ocserv可选出口实战
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-11-01
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>配置之前请关闭selinux，关闭iptable （线上） </p>
+<p>1.依赖包安装 </p>
+<pre><code>yum install pcre pcre-devel openssl openssl-devel gcc gcc+ -y 
+</code></pre><p>2.创建相关用户和文件夹 </p>
+<pre><code>useradd nginx -s /sbin/nologin -M 
+
+mkdir -p /application/nginx/ 
+</code></pre><p>3.编译安装nginx </p>
+<p>下载nginx包:</p>
+<pre><code>wget -q https://nginx.org/download/nginx-1.12.2.tar.gz 
+</code></pre><p>解压:</p>
+<pre><code>tar zxf nginx-1.12.2.tar.gz 
+</code></pre><p>进入目录: </p>
+<pre><code>cd nginx 
+
+./configure --user=nginx --group=nginx --prefix=/application/nginx-1.12.2/ --with-http_stub_status_module --with-http_ssl_module 
+
+make &amp;&amp; make install 
+</code></pre><p>4.启动nginx </p>
+<p>当前目录: </p>
+<p><img src="/images/image_5bdb1875_3f46f144.png" alt="img"> </p>
+<p>sbin/nginx -t 检查配置文件是否正常 </p>
+<p><img src="/images/image_5bdb1875_95758d0.png" alt="img"> </p>
+<p><img src="/images/image_5bdb1875_d6051f3.png" alt="img"> </p>
+<p>检查服务是否正常，当前服务正常。 </p>
+<p><img src="/images/image_5bdb1875_a2c04ca.png" alt="img"> </p>
+<p>5.检查是否能访问网址 </p>
+<p>以下是linux的测试结果，或者直接用电脑访问这个你的服务器ip地址 </p>
+<p><img src="/images/image_5bdb1875_3583eeed.png" alt="img"> </p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/2018/10/31/LVM磁盘扩展/">
-        <h1 class="post-title archive">
-            LVM磁盘扩展
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-10-31
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
             
-                <div class="post-preview">
-    <a href="/2018/10/23/负载均衡-LVS/">
-        <h1 class="post-title archive">
-            负载均衡-LVS
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-10-23
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/10/18/Linux-LVM磁盘扩展/">
-        <h1 class="post-title archive">
-            Linux-LVM磁盘扩展
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-10-18
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/10/17/企业VPN网络-简述/">
-        <h1 class="post-title archive">
-            企业VPN网络-简述
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/10/17/Docker-Django项目实例/">
-        <h1 class="post-title archive">
-            Docker-Django项目实例
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/10/17/Docker-常用命令/">
-        <h1 class="post-title archive">
-            Docker-常用命令
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/10/17/Iptables-详解/">
-        <h1 class="post-title archive">
-            Iptables-详解
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-10-17
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />
