@@ -17,9 +17,7 @@
 OS:centos7  nginx:1.14 mysql:5.6 php:5.6
 
 编译安装nginx
-yum install pcre pcre-devel openssl openssl-devel gcc gcc+ wget -y
-3.编译安装nginx 
-1234567891011"/>
+12345678yum install pcre pcre-devel openssl openssl-devel gcc gcc+ wget -y wget -q &amp;lt;http:/"/>
     
 
     <!--Author-->
@@ -38,9 +36,7 @@ yum install pcre pcre-devel openssl openssl-devel gcc gcc+ wget -y
 OS:centos7  nginx:1.14 mysql:5.6 php:5.6
 
 编译安装nginx
-yum install pcre pcre-devel openssl openssl-devel gcc gcc+ wget -y
-3.编译安装nginx 
-1234567891011"/>
+12345678yum install pcre pcre-devel openssl openssl-devel gcc gcc+ wget -y wget -q &amp;lt;http:/"/>
     
 
     <!--Open Graph Site Name-->
@@ -224,38 +220,15 @@ yum install pcre pcre-devel openssl openssl-devel gcc gcc+ wget -y
 <p>OS:centos7  nginx:1.14 mysql:5.6 php:5.6</p>
 </li>
 <li><p>编译安装nginx</p>
-<p>yum install pcre pcre-devel openssl openssl-devel gcc gcc+ wget -y</p>
-<p>3.编译安装nginx </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">wget -q &lt;http://nginx.org/download/nginx-1.14.1.tar.gz&gt;</span><br><span class="line"></span><br><span class="line">tar zxf nginx-1.14.1.tar.gz </span><br><span class="line"></span><br><span class="line">cd nginx-1.14.1</span><br><span class="line"></span><br><span class="line">./configure --prefix=/usr/local/nginx --pid-path=/var/run/nginx/nginx.pid --lock-path=/var/lock/nginx.lock --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --with-http_gzip_static_module  </span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install    </span><br><span class="line"></span><br><span class="line">ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx </span><br><span class="line"></span><br><span class="line">nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum install pcre pcre-devel openssl openssl-devel gcc gcc+ wget -y </span><br><span class="line">wget -q &lt;http://nginx.org/download/nginx-1.14.1.tar.gz&gt;</span><br><span class="line">tar zxf nginx-1.14.1.tar.gz </span><br><span class="line">cd nginx-1.14.1</span><br><span class="line">./configure --prefix=/usr/local/nginx --pid-path=/var/run/nginx/nginx.pid --lock-path=/var/lock/nginx.lock --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --with-http_gzip_static_module  </span><br><span class="line">make &amp;&amp; make install    </span><br><span class="line">ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx </span><br><span class="line">nginx</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>编译安装mysql</p>
-<p>**</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">yum** install wget gcc gcc-c++ git ncurses-devel libaio-devel  cmake perl-Module-Install.noarch -y</span><br><span class="line"></span><br><span class="line"> wget -q http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.34.tar.gz </span><br><span class="line"></span><br><span class="line">tar -xvzf mysql-5.6.34.tar.gz </span><br><span class="line"></span><br><span class="line">cd mysql-5.6.34 </span><br><span class="line"></span><br><span class="line">cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/usr/local/mysql/data -DSYSCONFDIR=/etc -DWITH_MYISAM_STORAGE_ENGINE=1 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_MEMORY_STORAGE_ENGINE=1  -DMYSQL_UNIX_ADDR=/var/run/mysql/mysqld.sock -DMYSQL_TCP_PORT=3306 -DENABLED_LOCAL_INFILE=1 -DWITH_PARTITION_STORAGE_ENGINE=1 -DEXTRA_CHARSETS=all  -DDEFAULT_CHARSET=utf8  -DDEFAULT_COLLATION=utf8_general_ci 	</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install 	</span><br><span class="line"></span><br><span class="line">chown -R mysql.mysql /usr/local/mysql/ 	</span><br><span class="line"></span><br><span class="line">mv /etc/my.cnf.bak /etc/my.cnf 	</span><br><span class="line"></span><br><span class="line">vi /etc/my.cnf</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yum install wget gcc gcc-c++ git ncurses-devel libaio-devel  cmake perl-Module-Install.noarch -y</span><br><span class="line">wget -q http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.34.tar.gz </span><br><span class="line">tar -xvzf mysql-5.6.34.tar.gz </span><br><span class="line">cd mysql-5.6.34 </span><br><span class="line">cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/usr/local/mysql/data -DSYSCONFDIR=/etc -DWITH_MYISAM_STORAGE_ENGINE=1 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_MEMORY_STORAGE_ENGINE=1  -DMYSQL_UNIX_ADDR=/var/run/mysql/mysqld.sock -DMYSQL_TCP_PORT=3306 -DENABLED_LOCAL_INFILE=1 -DWITH_PARTITION_STORAGE_ENGINE=1 -DEXTRA_CHARSETS=all  -DDEFAULT_CHARSET=utf8  -DDEFAULT_COLLATION=utf8_general_ci 	</span><br><span class="line">make &amp;&amp; make install 	</span><br><span class="line">chown -R mysql.mysql /usr/local/mysql/ 	</span><br><span class="line">mv /etc/my.cnf.bak /etc/my.cnf 	</span><br><span class="line">vi /etc/my.cnf</span><br></pre></td></tr></table></figure>
+<p> 配置文件见我的github config-blog/my.cnf</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/mysql/ 	</span><br><span class="line">./scripts/mysql_install_db --user=mysql --datadir=/usr/local/mysql/data --no-defaults cp ./support-files/mysql.server /etc/init.d/mysql 	</span><br><span class="line">chmod +x /etc/init.d/mysql 	</span><br><span class="line">mkdir /var/log/mysql/ -p 	</span><br><span class="line">chown -R mysql.mysql /var/log/mysql 	</span><br><span class="line">mkdir /var/run/mysql 	</span><br><span class="line">chown mysql /var/run/mysql 	</span><br><span class="line">chown -R mysql.mysql /var/lib/mysql/ 	</span><br><span class="line">/etc/init.d/mysql start</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<blockquote>
-<p>[mysql]         </p>
-<p>socket=/var/lib/mysql/mysql.sock         </p>
-<p>default-character-set=utf8         </p>
-<p>[mysqld]         </p>
-<p>skip-grant-tables         </p>
-<p>explicit_defaults_for_timestamp=true         </p>
-<p>skip-name-resolve         </p>
-<p>port = 3306         </p>
-<p>socket=/var/lib/mysql/mysql.sock         </p>
-<p>basedir=/usr/local/mysql         </p>
-<p>max_connections = 200         </p>
-<p>default-storage-engine=INNODB         </p>
-<p>lower_case_table_names=1         </p>
-<p>max_allowed_packet=16M         </p>
-<p>log-error=/var/log/mysql/mysql.log         </p>
-<p>pid-file=/var/run/mysql/mysql.pid         </p>
-<p>!includedir /etc/my.cnf.d         </p>
-</blockquote>
-   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/mysql/ 	</span><br><span class="line"></span><br><span class="line">./scripts/mysql_install_db --user=mysql --datadir=/usr/local/mysql/data --no-defaults 	</span><br><span class="line">cp ./support-files/mysql.server /etc/init.d/mysql 	</span><br><span class="line"></span><br><span class="line">chmod +x /etc/init.d/mysql 	</span><br><span class="line"></span><br><span class="line">mkdir /var/log/mysql/ -p 	</span><br><span class="line"></span><br><span class="line">chown -R mysql.mysql /var/log/mysql 	</span><br><span class="line"></span><br><span class="line">mkdir /var/run/mysql 	</span><br><span class="line"></span><br><span class="line">chown mysql /var/run/mysql 	</span><br><span class="line"></span><br><span class="line">chown -R mysql.mysql /var/lib/mysql/ 	</span><br><span class="line"></span><br><span class="line">/etc/init.d/mysql start</span><br></pre></td></tr></table></figure>
-<ol start="4">
 <li><p>编译安装php</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">yum** install -y gcc gcc-c++ make gd-devel libxml2-devel libcurl-devel libjpeg-devel libpng-devel openssl-devel</span><br><span class="line"></span><br><span class="line">wget http://cn2.php.net/distributions/php-5.6.38.tar.gz </span><br><span class="line"></span><br><span class="line">tar -xvzf php-5.6.38.tar.gz </span><br><span class="line"></span><br><span class="line">cd php-5.6.38 </span><br><span class="line"></span><br><span class="line">./configure --prefix=/usr/local/php         --with-config-file-path=/usr/local/php/etc         --with-mysql --with-mysqli         --with-openssl --with-zlib --with-curl --with-gd         --with-jpeg-dir --with-png-dir --with-iconv         --enable-fpm --enable-zip --enable-mbstring &amp;&amp;         make -j 4 &amp;&amp;         make install </span><br><span class="line"></span><br><span class="line">cd /usr/local/php/etc/ </span><br><span class="line"></span><br><span class="line">vi php-fpm.conf.default</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum install -y gcc gcc-c++ make gd-devel libxml2-devel libcurl-devel libjpeg-devel libpng-devel openssl-devel</span><br><span class="line">wget http://cn2.php.net/distributions/php-5.6.38.tar.gz </span><br><span class="line">tar -xvzf php-5.6.38.tar.gz </span><br><span class="line">cd php-5.6.38 </span><br><span class="line">./configure --prefix=/usr/local/php         --with-config-file-path=/usr/local/php/etc         --with-mysql --with-mysqli         --with-openssl --with-zlib --with-curl --with-gd         --with-jpeg-dir --with-png-dir --with-iconv         --enable-fpm --enable-zip --enable-mbstring &amp;&amp;         make -j 4 &amp;&amp;         make install </span><br><span class="line">cd /usr/local/php/etc/ </span><br><span class="line">vi php-fpm.conf.default</span><br></pre></td></tr></table></figure>
 <p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fxp3barxvkj30oe088q3k.jpg" alt="img"> </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/php</span><br><span class="line">cp etc/php-fpm.conf.default etc/php-fpm.conf </span><br><span class="line"> ./sbin/php-fpm</span><br></pre></td></tr></table></figure>
 </li>
@@ -266,14 +239,10 @@ yum install pcre pcre-devel openssl openssl-devel gcc gcc+ wget -y
 <p>拿掉下面语句的注释,修改圈出来的部分         </p>
 <p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fxp3cpv1ihj30v60823zj.jpg" alt="img">         </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/local/nginx/html/test.php</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>&lt;?php     </p>
-<p>​    phpinfo();     </p>
-<p>?&gt; </p>
-</blockquote>
+<p> 见我的github config-blog/test.php</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
 <p>打开 ip/test.php      </p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fxp3eu5p7pj31b70u0n2d.jpg" alt="image-20181129180839744"></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fxp3eqqqq6j31b70u07bq.jpg" alt="image-20181129180839744"></p>
 
 
                 
