@@ -13,6 +13,18 @@
     
 
     
+        <meta name="description" content="环境
+OS:centos7. 安装Docker
+镜像:mysql 5.6
+数据持久化 挂载宿主机目录到Docker-mysql
+运用exec来执行mysql语句
+
+获取镜像
+1docker pull mysql:5.6
+
+创建容器
+1docker run -itd --name mysql-5.6 "/>
+    
 
     <!--Author-->
     
@@ -21,10 +33,22 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Devops"/>
+        <meta property="og:title" content="Docker-Mysql使用"/>
     
 
     <!--Open Graph Description-->
+    
+        <meta property="og:description" content="环境
+OS:centos7. 安装Docker
+镜像:mysql 5.6
+数据持久化 挂载宿主机目录到Docker-mysql
+运用exec来执行mysql语句
+
+获取镜像
+1docker pull mysql:5.6
+
+创建容器
+1docker run -itd --name mysql-5.6 "/>
     
 
     <!--Open Graph Site Name-->
@@ -32,7 +56,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website"/>
+        <meta property="og:type" content="article"/>
     
 
     <!--Page Cover-->
@@ -51,7 +75,7 @@
 
     <!-- Title -->
     
-    <title>Devops</title>
+    <title>Docker-Mysql使用 - Devops</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -154,188 +178,90 @@
 
     <!-- Main Content -->
     <!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Devops</h1>
-                    <hr class="small">
-                    <span class="subheading"></span>
+                <div class="post-heading">
+                    <h1>Docker-Mysql使用</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-11-29
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            
-                <div class="post-preview">
-    <a href="/2018/11/29/LNMP编译安装过程/">
-        <h2 class="post-title">
-            LNMP编译安装过程
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-11-29
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/11/29/Docker-Mysql使用/">
-        <h2 class="post-title">
-            Docker-Mysql使用
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-11-29
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/11/29/shell-sed常用/">
-        <h2 class="post-title">
-            shell-sed常用
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-11-29
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/11/29/shell-awk常用/">
-        <h2 class="post-title">
-            shell-awk常用
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-11-29
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/11/29/shell-grep常用/">
-        <h2 class="post-title">
-            shell-grep常用
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-11-29
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/11/29/git使用shadowsocks加速/">
-        <h2 class="post-title">
-            git使用shadowsocks加速
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-11-29
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/11/29/Linux性能分析和优化-0/">
-        <h2 class="post-title">
-            Linux性能分析和优化
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-11-29
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/11/29/Linux内核参数优化/">
-        <h2 class="post-title">
-            Linux内核参数优化
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-11-29
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/11/29/centos-ip配置和路由/">
-        <h2 class="post-title">
-            centos-ip配置和路由
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-11-29
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/11/28/hexo博客更换电脑恢复步骤/">
-        <h2 class="post-title">
-            hexo博客更换电脑恢复步骤
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-11-28
-    </p>
-</div>
-<hr>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Docker/">#Docker</a> <a href="/tags/数据库/">#数据库</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
             
 
-            <ul class="pager">
-    
-    
-        <li class="next"><a href="/page/2/">Older Posts  &rarr;</a></li>
-    
-</ul>
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ol>
+<li><p>环境</p>
+<p>OS:centos7. 安装Docker</p>
+<p>镜像:mysql 5.6</p>
+<p>数据持久化 挂载宿主机目录到Docker-mysql</p>
+<p>运用exec来执行mysql语句</p>
+</li>
+<li><p>获取镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql:5.6</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name mysql-5.6 -v /var/lib/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=test123  mysql:5.6 --character-set-server=utf8</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fxoxbf2u2ij31ig02oaan.jpg" alt="image-20181129143749450"></p>
+</li>
+<li><p>执行语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec mysql-5.6 sh -c &apos;exec mysql -uroot -p&quot;$MYSQL_ROOT_PASSWORD&quot; -e &quot;create database wordpress&quot;&apos;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
         </div>
     </div>
-</div>
-
-
+</article>
 
     <!-- Footer -->
     <hr />

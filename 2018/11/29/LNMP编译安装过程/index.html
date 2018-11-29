@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="安装环境
+OS:centos7  nginx:1.14 mysql:5.6 php:5.6
+
+编译安装nginx
+yum install pcre pcre-devel openssl openssl-devel gcc gcc+ wget -y
+3.编译安装nginx 
+1234567891011"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="herbiel"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="LNMP编译安装过程"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="安装环境
+OS:centos7  nginx:1.14 mysql:5.6 php:5.6
+
+编译安装nginx
+yum install pcre pcre-devel openssl openssl-devel gcc gcc+ wget -y
+3.编译安装nginx 
+1234567891011"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Devops"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="herbiel.github.iohttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="herbiel.github.iohttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>LNMP编译安装过程 - Devops</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">站在巨人的肩膀上</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>LNMP编译安装过程</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-11-29
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/LINUX/">#LINUX</a> <a href="/tags/WEB/">#WEB</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ol>
+<li><p>安装环境</p>
+<p>OS:centos7  nginx:1.14 mysql:5.6 php:5.6</p>
+</li>
+<li><p>编译安装nginx</p>
+<p>yum install pcre pcre-devel openssl openssl-devel gcc gcc+ wget -y</p>
+<p>3.编译安装nginx </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">wget -q &lt;http://nginx.org/download/nginx-1.14.1.tar.gz&gt;</span><br><span class="line"></span><br><span class="line">tar zxf nginx-1.14.1.tar.gz </span><br><span class="line"></span><br><span class="line">cd nginx-1.14.1</span><br><span class="line"></span><br><span class="line">./configure --prefix=/usr/local/nginx --pid-path=/var/run/nginx/nginx.pid --lock-path=/var/lock/nginx.lock --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --with-http_gzip_static_module  </span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install    </span><br><span class="line"></span><br><span class="line">ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx </span><br><span class="line"></span><br><span class="line">nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译安装mysql</p>
+<p>**</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">yum** install wget gcc gcc-c++ git ncurses-devel libaio-devel  cmake perl-Module-Install.noarch -y</span><br><span class="line"></span><br><span class="line"> wget -q http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.34.tar.gz </span><br><span class="line"></span><br><span class="line">tar -xvzf mysql-5.6.34.tar.gz </span><br><span class="line"></span><br><span class="line">cd mysql-5.6.34 </span><br><span class="line"></span><br><span class="line">cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/usr/local/mysql/data -DSYSCONFDIR=/etc -DWITH_MYISAM_STORAGE_ENGINE=1 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_MEMORY_STORAGE_ENGINE=1  -DMYSQL_UNIX_ADDR=/var/run/mysql/mysqld.sock -DMYSQL_TCP_PORT=3306 -DENABLED_LOCAL_INFILE=1 -DWITH_PARTITION_STORAGE_ENGINE=1 -DEXTRA_CHARSETS=all  -DDEFAULT_CHARSET=utf8  -DDEFAULT_COLLATION=utf8_general_ci 	</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install 	</span><br><span class="line"></span><br><span class="line">chown -R mysql.mysql /usr/local/mysql/ 	</span><br><span class="line"></span><br><span class="line">mv /etc/my.cnf.bak /etc/my.cnf 	</span><br><span class="line"></span><br><span class="line">vi /etc/my.cnf</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>[mysql]         </p>
+<p>socket=/var/lib/mysql/mysql.sock         </p>
+<p>default-character-set=utf8         </p>
+<p>[mysqld]         </p>
+<p>skip-grant-tables         </p>
+<p>explicit_defaults_for_timestamp=true         </p>
+<p>skip-name-resolve         </p>
+<p>port = 3306         </p>
+<p>socket=/var/lib/mysql/mysql.sock         </p>
+<p>basedir=/usr/local/mysql         </p>
+<p>max_connections = 200         </p>
+<p>default-storage-engine=INNODB         </p>
+<p>lower_case_table_names=1         </p>
+<p>max_allowed_packet=16M         </p>
+<p>log-error=/var/log/mysql/mysql.log         </p>
+<p>pid-file=/var/run/mysql/mysql.pid         </p>
+<p>!includedir /etc/my.cnf.d         </p>
+</blockquote>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/mysql/ 	</span><br><span class="line"></span><br><span class="line">./scripts/mysql_install_db --user=mysql --datadir=/usr/local/mysql/data --no-defaults 	</span><br><span class="line">cp ./support-files/mysql.server /etc/init.d/mysql 	</span><br><span class="line"></span><br><span class="line">chmod +x /etc/init.d/mysql 	</span><br><span class="line"></span><br><span class="line">mkdir /var/log/mysql/ -p 	</span><br><span class="line"></span><br><span class="line">chown -R mysql.mysql /var/log/mysql 	</span><br><span class="line"></span><br><span class="line">mkdir /var/run/mysql 	</span><br><span class="line"></span><br><span class="line">chown mysql /var/run/mysql 	</span><br><span class="line"></span><br><span class="line">chown -R mysql.mysql /var/lib/mysql/ 	</span><br><span class="line"></span><br><span class="line">/etc/init.d/mysql start</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li><p>编译安装php</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">yum** install -y gcc gcc-c++ make gd-devel libxml2-devel libcurl-devel libjpeg-devel libpng-devel openssl-devel</span><br><span class="line"></span><br><span class="line">wget http://cn2.php.net/distributions/php-5.6.38.tar.gz </span><br><span class="line"></span><br><span class="line">tar -xvzf php-5.6.38.tar.gz </span><br><span class="line"></span><br><span class="line">cd php-5.6.38 </span><br><span class="line"></span><br><span class="line">./configure --prefix=/usr/local/php         --with-config-file-path=/usr/local/php/etc         --with-mysql --with-mysqli         --with-openssl --with-zlib --with-curl --with-gd         --with-jpeg-dir --with-png-dir --with-iconv         --enable-fpm --enable-zip --enable-mbstring &amp;&amp;         make -j 4 &amp;&amp;         make install </span><br><span class="line"></span><br><span class="line">cd /usr/local/php/etc/ </span><br><span class="line"></span><br><span class="line">vi php-fpm.conf.default</span><br></pre></td></tr></table></figure>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fxp3barxvkj30oe088q3k.jpg" alt="img"> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/php</span><br><span class="line">cp etc/php-fpm.conf.default etc/php-fpm.conf </span><br><span class="line"> ./sbin/php-fpm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置nginx</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
+<p>拿掉下面语句的注释,修改圈出来的部分         </p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fxp3cpv1ihj30v60823zj.jpg" alt="img">         </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/local/nginx/html/test.php</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&lt;?php     </p>
+<p>​    phpinfo();     </p>
+<p>?&gt; </p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
+<p>打开 ip/test.php      </p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fxp3eu5p7pj31b70u0n2d.jpg" alt="image-20181129180839744"></p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 herbiel<br></p>
+                <p class="copyright text-muted">关于本人 <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">herbiel</a> </p>
+                <!--<p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>-->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
