@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="定义
+ansible是新出现的自动化运维工具，基于Python开发，集合了众多运维工具（puppet、chef、func、fabric）的优点，实现了批量系统配置、批量程序部署、批量运行命令等功能。
+　　ansible是基于 paramiko（框架） 开发的,并且基于模块化工作，本身没有批量部署的能">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="herbiel">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Ansible基本配置">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="定义
+ansible是新出现的自动化运维工具，基于Python开发，集合了众多运维工具（puppet、chef、func、fabric）的优点，实现了批量系统配置、批量程序部署、批量运行命令等功能。
+　　ansible是基于 paramiko（框架） 开发的,并且基于模块化工作，本身没有批量部署的能">
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Devops">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="herbiel.github.iohttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg">
+    
+
+        <meta name="twitter:card" content="summary_large_image">
+
+    
+
+    
+        <meta name="twitter:image" content="herbiel.github.iohttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg">
+    
+
+    <!-- Title -->
+    
+    <title>Ansible基本配置 - Devops</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">站在巨人的肩膀上</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Ansible基本配置</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-12-03
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Linux/">#Linux</a> <a href="/tags/Devops/">#Devops</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>定义</p>
+<p>ansible是新出现的自动化运维工具，<strong>基于Python开发</strong>，集合了众多运维工具（puppet、chef、func、fabric）的优点，实现了<strong>批量系统配置、批量程序部署、批量运行命令</strong>等功能。</p>
+<p>　　ansible是基于 paramiko（框架） 开发的,并且基于<strong>模块化</strong>工作，本身没有批量部署的能力。真正具有批量部署的是ansible所运行的模块，ansible只是提供一种框架。ansible<strong>不需要在远程主机上安装client/agents</strong>，因为它们是<strong>基于ssh</strong>来和远程主机通讯的。ansible目前已经<strong>已经被红帽官方收购</strong>，是自动化运维工具中大家认可度最高的，并且上手容易，学习简单。是每位运维工程师必须掌握的技能之一。</p>
+<p>主要特点</p>
+<ol>
+<li>部署简单，<strong>只需在主控端部署Ansible环境</strong>，被控端无需做任何操作，没有agent；</li>
+<li>默认使用<strong>SSH协议</strong>对设备进行管理；</li>
+<li>有大量常规运维操作模块，可实现日常绝大部分操作。</li>
+<li>配置简单、功能强大、扩展性强；</li>
+<li>支持API及自定义模块，可通过Python轻松扩展；</li>
+<li>通过Playbooks（剧本）来定制强大的配置、状态管理；</li>
+<li><strong>轻量级</strong>，无需在客户端安装agent，更新时，只需在操作机上进行一次更新即可；</li>
+<li>提供一个功能强大、操作性强的Web管理界面和REST API接口——AWX平台。</li>
+</ol>
+<p>主要应用的模式</p>
+<p>ad-hot</p>
+<p>playbook</p>
+<p>Ansible系统由控制主机对被管节点的操作方式可分为两类，即ad-hoc和playbook：</p>
+<p>　　<strong>·ad-hoc（点对点）模式：</strong>使用单个模块，支持批量执行单条命令。 ad-hoc 命令是一种可以快速输入的命令，而且不需要保存起来的命令。就相当于bash中的一句话shell。</p>
+<p>　　<strong>·playbook（剧本）模式：</strong>是Ansible主要管理方式，也是Ansible功能强大的关键所在。playbook通过<strong>多个task集合</strong>完成一类功能，如Web服务的安装部署、数据库服务器的批量备份等。可以简单地把playbook理解为通过组合多条ad-hoc操作作的配置文件。</p>
+<p>执行过程</p>
+<ol>
+<li>加载自己的配置文件 默认<strong>/etc/ansible/ansible.cfg</strong></li>
+<li>查找对应的<strong>主机配置文件</strong>，找到要执行的主机或者组</li>
+<li>加载自己对应的<strong>模块文件</strong>，如command</li>
+<li>通过ansible将模块或命令生成对应的<strong>临时py文件</strong>，并将该文件传输至远程服务器端</li>
+<li>对应执行用户的家目录的.ansible/tmp/XXX/XXX.PY文件</li>
+<li>给文件+x执行</li>
+<li>执行并返回结果</li>
+<li><strong>删除临时py文件，sleep 0退出</strong></li>
+</ol>
+<p>服务端配置</p>
+<ol>
+<li><p>安装</p>
+<p>使用yum 安装</p>
+<p>yum install epel-release -y</p>
+<p>yum install <strong>ansible</strong> –y</p>
+<p>使用pip （python 的包管理模块）安装</p>
+<p>pip install ansible   如果没pip,需先安装pip.yum可直接安装：</p>
+<p>yum install python-pip</p>
+<p>pip install ansible</p>
+</li>
+<li><p>配置文件配置</p>
+<p>sudo_user：</p>
+<p>这是设置默认执行命令的用户，也可以在playbook中重新设置这个参数。配置实例如下：</p>
+<p>　　sudo_user = root</p>
+<p>remote_port：</p>
+<p>这是指定连接被管节点的管理端口，默认是22。除非设置了特殊的SSH端口，不然这个参数一般是 不需要修改的。配置实例如下：</p>
+<p>　　remote_port = 22</p>
+<p>host_key_checking：</p>
+<p>这是设置是否检查SSH主机的密钥。可以设置为True或False，关闭后第一次连接没有提示配置实例</p>
+<p>　　host_key_checking = False</p>
+<p>timeout：</p>
+<p>这是设置SSH连接的超时间隔，单位是秒。配置实例如下：</p>
+<p>　　timeout = 60</p>
+<p>log_path：Ansible系统默认是不记录日志的，如果想把Ansible系统的输出记录到日志文件中，需要设置log_path 来指定一个存储Ansible日志的文件。配置实例如下：</p>
+<p>　　log_path = /var/log/ansible.log</p>
+<p>　　另外需要注意，执行Ansible的用户需要有写入日志的权限，模块将会调用被管节点的syslog来记录</p>
+</li>
+<li><p>公钥推送</p>
+<p>Ansible配置公私钥</p>
+<p>配置ansible 使用公钥验证</p>
+<p>虽然ansible支持其他主机认证方式，但是我们最常用的的还是基于秘钥的认证：</p>
+<p>首先生成秘钥</p>
+<p>ssh-keygen -t rsa -P ‘’</p>
+<p>然后向主机分发秘钥：</p>
+<p>ssh-copy-id root@ 　　#@后面跟主机名或者IP地址3、如果出现以下情况：</p>
+<p># ssh-copy-id -i ~/.ssh/id_rsa.pub 172.10.8.133</p>
+<p>-bash: ssh-copy-id: command not found</p>
+<p>请尝试： yum -y install openssh-clientsansible</p>
+</li>
+<li><p>测试ping 模块</p>
+<p>配置web组的服务器</p>
+<p>vim /etc/ansible/hosts</p>
+<p>[web]</p>
+<p>172.10.8.133</p>
+<p>172.10.8.134</p>
+<p>定义hosts 有3类：</p>
+<p>Ex1：未分组的主机，在任何组头之前指定</p>
+<p>Ex2：有组的主机，一组属于”webservers”组的主机</p>
+<p>Ex3：和数据库有关的，”dbservers”组中的数据库服务器集合</p>
+<p>执行命令测试ping模块</p>
+<p>ansible web -m ping</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fxtefn6pr7j30uy0aygno.jpg" alt="image-20181203113219545"></p>
+</li>
+</ol>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 herbiel<br></p>
+                <p class="copyright text-muted">关于本人 <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">herbiel</a> </p>
+                <!--<p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>-->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
