@@ -14,8 +14,7 @@
 
     
         <meta name="description" content="LVS 架构Linux Virtual System
-模式NAT
-原理(a). 当用户请求到达Director Server，此时请求的数据报文会先到内核空间的PREROUTING链。 此时报文的源IP为CIP，目标IP为VIP(b). PREROUTING检查发现数据包的目标IP是本机，将数据包送">
+模式NAT原理(a). 当用户请求到达Director Server，此时请求的数据报文会先到内核空间的PREROUTING链。 此时报文的源IP为CIP，目标IP为VIP(b). PREROUTING检查发现数据包的目标IP是本机，将数据包送至">
     
 
     <!--Author-->
@@ -31,8 +30,7 @@
     <!--Open Graph Description-->
     
         <meta property="og:description" content="LVS 架构Linux Virtual System
-模式NAT
-原理(a). 当用户请求到达Director Server，此时请求的数据报文会先到内核空间的PREROUTING链。 此时报文的源IP为CIP，目标IP为VIP(b). PREROUTING检查发现数据包的目标IP是本机，将数据包送">
+模式NAT原理(a). 当用户请求到达Director Server，此时请求的数据报文会先到内核空间的PREROUTING链。 此时报文的源IP为CIP，目标IP为VIP(b). PREROUTING检查发现数据包的目标IP是本机，将数据包送至">
     
 
     <!--Open Graph Site Name-->
@@ -212,10 +210,9 @@
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <h1 id="LVS-架构"><a href="#LVS-架构" class="headerlink" title="LVS 架构"></a>LVS 架构</h1><p>Linux Virtual System</p>
-<h3 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h3><p>NAT</p>
-<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>(a). 当用户请求到达Director Server，此时请求的数据报文会先到内核空间的PREROUTING链。 此时报文的源IP为CIP，目标IP为VIP<br>(b). PREROUTING检查发现数据包的目标IP是本机，将数据包送至INPUT链<br>(c). IPVS比对数据包请求的服务是否为集群服务，若是，修改数据包的目标IP地址为后端服务器IP，然后将数据包发至POSTROUTING链。 此时报文的源IP为CIP，目标IP为RIP<br>(d). POSTROUTING链通过选路，将数据包发送给Real Server<br>(e). Real Server比对发现目标为自己的IP，开始构建响应报文发回给Director Server。 此时报文的源IP为RIP，目标IP为CIP<br>(f). Director Server在响应客户端前，此时会将源IP地址修改为自己的VIP地址，然后响应给客户端。 此时报文的源IP为VIP，目标IP为CIP</p>
-<h5 id="实际上就是客户端请求vip服务器是CIP–VIP-转换成-CIP-RIP-RS返回数据时RIP–CIP转换成VIP–CIP、"><a href="#实际上就是客户端请求vip服务器是CIP–VIP-转换成-CIP-RIP-RS返回数据时RIP–CIP转换成VIP–CIP、" class="headerlink" title="实际上就是客户端请求vip服务器是CIP–VIP 转换成 CIP-RIP,RS返回数据时RIP–CIP转换成VIP–CIP、"></a>实际上就是客户端请求vip服务器是CIP–VIP 转换成 CIP-RIP,RS返回数据时RIP–CIP转换成VIP–CIP、</h5><p><img src="../images/1546054157930.png" alt="1546054157930"></p>
-<table>
+<h3 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h3><h2 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h2><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>(a). 当用户请求到达Director Server，此时请求的数据报文会先到内核空间的PREROUTING链。 此时报文的源IP为CIP，目标IP为VIP<br>(b). PREROUTING检查发现数据包的目标IP是本机，将数据包送至INPUT链<br>(c). IPVS比对数据包请求的服务是否为集群服务，若是，修改数据包的目标IP地址为后端服务器IP，然后将数据包发至POSTROUTING链。 此时报文的源IP为CIP，目标IP为RIP<br>(d). POSTROUTING链通过选路，将数据包发送给Real Server<br>(e). Real Server比对发现目标为自己的IP，开始构建响应报文发回给Director Server。 此时报文的源IP为RIP，目标IP为CIP<br>(f). Director Server在响应客户端前，此时会将源IP地址修改为自己的VIP地址，然后响应给客户端。 此时报文的源IP为VIP，目标IP为CIP</p>
+<h5 id="实际上就是客户端请求vip服务器是CIP–VIP-转换成-CIP-RIP-RS返回数据时RIP–CIP转换成VIP–CIP"><a href="#实际上就是客户端请求vip服务器是CIP–VIP-转换成-CIP-RIP-RS返回数据时RIP–CIP转换成VIP–CIP" class="headerlink" title="实际上就是客户端请求vip服务器是CIP–VIP 转换成 CIP-RIP,RS返回数据时RIP–CIP转换成VIP–CIP"></a>实际上就是客户端请求vip服务器是CIP–VIP 转换成 CIP-RIP,RS返回数据时RIP–CIP转换成VIP–CIP</h5><h3 id="原理图"><a href="#原理图" class="headerlink" title="原理图"></a>原理图</h3><p><img src="../images/1546054640062.png" alt="1546054640062"></p>
+<h3 id="实战规划"><a href="#实战规划" class="headerlink" title="实战规划"></a>实战规划</h3><table>
 <thead>
 <tr>
 <th>服务器</th>
@@ -225,22 +222,75 @@
 <tbody>
 <tr>
 <td>DS服务器LVS</td>
-<td>vip:192.168.1.200 DIP:172.16.10.10</td>
+<td>vip:192.168.1.220 DIP:172.16.10.10</td>
 </tr>
 <tr>
 <td>RS1</td>
-<td>RIP:172.16.10.11</td>
+<td>RIP:172.16.10.221</td>
 </tr>
 <tr>
 <td>RS2</td>
-<td>RIP:172.16.10.12</td>
+<td>RIP:172.16.10.222</td>
 </tr>
 </tbody>
 </table>
-<p>DR</p>
-<p>IP-TUN</p>
-<p>FullNAT</p>
-
+<p>LVS-DS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum install ipvsadm</span><br><span class="line">iptables -F &amp;&amp; setenforce 0</span><br><span class="line">ipvsadm -A -t 192.168.1.220:80 -s wrr</span><br><span class="line">ipvsadm -a -t 192.168.1.220:80 -r 172.16.10.221:80 -m -w 1</span><br><span class="line">ipvsadm -a -t 192.168.1.220:80 -r 172.16.10.222:80 -m -w 1</span><br><span class="line">echo &quot;net.ipv4.ip_forward = 1&quot; &gt;&gt; /etc/sysctl.conf</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+<p>LVS-RS</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip route add default via 172.16.10.10</span><br></pre></td></tr></table></figure>
+<p>总结</p>
+<blockquote>
+<p>LVS dr服务器需要两张网卡,DIP网卡和VIP网卡</p>
+<p>CIP和VIP,RIP要互通</p>
+<p>RS必须把网关指向DIP</p>
+</blockquote>
+<h2 id="DR"><a href="#DR" class="headerlink" title="DR"></a>DR</h2><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><p>1、当用户请求到达Director Server，此时请求的数据报文会先到内核空间的PREROUTING链。 此时报文的源IP为CIP，目标IP为VIP</p>
+<p>2、PREROUTING检查发现数据包的目标IP是本机，将数据包送至INPUT链</p>
+<p>3、 IPVS比对数据包请求的服务是否为集群服务，若是，将请求报文中的源MAC地址修改为DIP的MAC地址，将目标MAC地址修改RIP的MAC地址，然后将数据包发至POSTROUTING链。 此时的源IP和目的IP均未修改，仅修改了源MAC地址为DIP的MAC地址，目标MAC地址为RIP的MAC地址</p>
+<p>4、 由于DS和RS在同一个网络中，所以是通过二层来传输。POSTROUTING链检查目标MAC地址为RIP的MAC地址，那么此时数据包将会发至Real Server。</p>
+<p>5、 RS发现请求报文的MAC地址是自己的MAC地址，就接收此报文。处理完成之后，将响应报文通过lo接口传送给eth0网卡然后向外发出。 此时的源IP地址为VIP，目标IP为CIP</p>
+<p>6、 响应报文最终送达至客户端</p>
+<h3 id="原理图-1"><a href="#原理图-1" class="headerlink" title="原理图"></a>原理图</h3><p><img src="../images/1546066034360.png" alt="1546066034360"></p>
+<h3 id="实战规划-1"><a href="#实战规划-1" class="headerlink" title="实战规划"></a>实战规划</h3><table>
+<thead>
+<tr>
+<th>服务器</th>
+<th>ip地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DS</td>
+<td>VIP:172.16.10.250 DIP:10.23.23.10</td>
+</tr>
+<tr>
+<td>RS1</td>
+<td>RIP:10.23.23.20</td>
+</tr>
+<tr>
+<td>RS2</td>
+<td>RIP:10.23.23.30</td>
+</tr>
+</tbody>
+</table>
+<p><img src="../images/1546487486188-1546498122809.png" alt="546487486188"></p>
+<p>centos路由器配置</p>
+<p><img src="../images/1546498681732.png" alt="1546498681732"></p>
+<p><img src="../images/1546498921192.png" alt="1546498921192"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo "1" &gt; /etc/sys/net/ipv4/ip_forward</span><br><span class="line">route add -host 172.16.10.250 dev eno67109432</span><br></pre></td></tr></table></figure>
+<p>DS配置</p>
+<p><img src="../images/1546498898323.png" alt="1546498898323"></p>
+<p><img src="../images/1546498946983.png" alt="1546498946983"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eno16777736:0 172.16.10.250 broadcast 172.16.10.250 netmask 255.255.255.255 up</span><br><span class="line"></span><br><span class="line">route add -host 172.16.10.250 dev eno16777736:0</span><br><span class="line"></span><br><span class="line">ipvsadm -A -t 172.16.10.250:80 -s wrr</span><br><span class="line">ipvsadm -a -t 172.16.10.250:80 -r 10.23.23.20:80 -g -w 1</span><br><span class="line">ipvsadm -a -t 172.16.10.250:80 -r 10.23.23.30:80 -g -w 1</span><br></pre></td></tr></table></figure>
+<p>RS配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ifconfig lo:0 172.16.10.250 broadcast 172.16.10.250 netmask 255.255.255.255 up</span><br><span class="line"></span><br><span class="line">route add default gw 10.23.23.2</span><br><span class="line"></span><br><span class="line">echo "1" &gt; /proc/sys/net/ipv4/conf/lo/arp_ignore</span><br><span class="line">echo "2" &gt; /proc/sys/net/ipv4/conf/lo/arp_announce</span><br><span class="line">echo "1" &gt; /proc/sys/net/ipv4/conf/all/arp_ignore</span><br><span class="line">echo "2" &gt; /proc/sys/net/ipv4/conf/all/arp_announce</span><br></pre></td></tr></table></figure>
+<p><img src="../images/1546498984176.png" alt="1546498984176"></p>
+<p><img src="../images/1546499023346.png" alt="1546499023346"></p>
+<h2 id="IP-TUN"><a href="#IP-TUN" class="headerlink" title="IP-TUN"></a>IP-TUN</h2><p>原理</p>
+<p>原理图</p>
+<p><img src="../images/1546066391739.png" alt="1546066391739"></p>
+<p>实战规划</p>
+<h2 id="FullNAT"><a href="#FullNAT" class="headerlink" title="FullNAT"></a>FullNAT</h2>
 
                 
             </div>
@@ -287,7 +337,7 @@
 
                     
                 </ul>
-                <p class="copyright text-muted">&copy; 2018 herbiel<br></p>
+                <p class="copyright text-muted">&copy; 2019 herbiel<br></p>
                 <p class="copyright text-muted">关于本人 <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">herbiel</a> </p>
                 <!--<p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>-->
             </div>
