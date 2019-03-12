@@ -13,8 +13,13 @@
     
 
     
-        <meta name="description" content="zabbix-agent.yml
-hosts: webremote_user: roottasks:​      - name: shell init system​        shell: setenforce 0​      - name: copy zabbix-release​     ">
+        <meta name="description" content="squid正向代理
+安装1yum install squid httpd-tools
+
+
+
+配置
+关闭不必要的端口 (只保留80和443)12345678910acl Safe_ports port 80          # http#acl Safe_ports port 21         ">
     
 
     <!--Author-->
@@ -24,13 +29,18 @@ hosts: webremote_user: roottasks:​      - name: shell init system​        sh
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="ansible-playbook实战zabbix-agent">
+        <meta property="og:title" content="squid-正向代理">
     
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="zabbix-agent.yml
-hosts: webremote_user: roottasks:​      - name: shell init system​        shell: setenforce 0​      - name: copy zabbix-release​     ">
+        <meta property="og:description" content="squid正向代理
+安装1yum install squid httpd-tools
+
+
+
+配置
+关闭不必要的端口 (只保留80和443)12345678910acl Safe_ports port 80          # http#acl Safe_ports port 21         ">
     
 
     <!--Open Graph Site Name-->
@@ -57,7 +67,7 @@ hosts: webremote_user: roottasks:​      - name: shell init system​        sh
 
     <!-- Title -->
     
-    <title>ansible-playbook实战zabbix-agent - Devops</title>
+    <title>squid-正向代理 - Devops</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -167,13 +177,13 @@ hosts: webremote_user: roottasks:​      - name: shell init system​        sh
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>ansible-playbook实战zabbix-agent</h1>
+                    <h1>squid-正向代理</h1>
                     
                     <span class="meta">
                         <!-- Date and Author -->
                         
                         
-                            2018-12-27
+                            2019-03-12
                         
                     </span>
                 </div>
@@ -194,7 +204,7 @@ hosts: webremote_user: roottasks:​      - name: shell init system​        sh
                         
 
 
-<a href="/tags/Linux/">#Linux</a> <a href="/tags/Devops/">#Devops</a> <a href="/tags/监控/">#监控</a> <a href="/tags/ansible/">#ansible</a>
+<a href="/tags/Linux/">#Linux</a> <a href="/tags/Squid/">#Squid</a> <a href="/tags/代理服务器/">#代理服务器</a>
 
 
                     
@@ -209,9 +219,49 @@ hosts: webremote_user: roottasks:​      - name: shell init system​        sh
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <h2 id="zabbix-agent-yml"><a href="#zabbix-agent-yml" class="headerlink" title=" zabbix-agent.yml"></a> zabbix-agent.yml</h2><ul>
-<li>hosts: web<br>remote_user: root<br>tasks:<br>​      - name: shell init system<br>​        shell: setenforce 0<br>​      - name: copy zabbix-release<br>​        copy: src=/root/zabbix-release-3.4-1.el7.centos.noarch.rpm dest=/root/zabbix-release-3.4-1.el7.centos.noarch.rpm force=yes<br>​      - name: yum zabbix-agent<br>​        yum: name= state=present disable_gpg_check=yes<br>​        with_items:<br>​           - { name: ‘/root/zabbix-release-3.4-1.el7.centos.noarch.rpm’ }<br>​           - { name: ‘zabbix-agent’ }<br>​      - name: copy zabbix-config file<br>​        copy: src=/root/zabbix_agentd.conf dest=/etc/zabbix/zabbix_agentd.conf force=yes<br>​      - name: start service for zabbix-agent<br>​        service: name=zabbix-agent state=started</li>
+                <h1 id="squid正向代理"><a href="#squid正向代理" class="headerlink" title="squid正向代理"></a>squid正向代理</h1><ol>
+<li><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install squid httpd-tools</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ol>
+<li><h4 id="关闭不必要的端口-只保留80和443"><a href="#关闭不必要的端口-只保留80和443" class="headerlink" title="关闭不必要的端口 (只保留80和443)"></a>关闭不必要的端口 (只保留80和443)</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">acl Safe_ports port 80          # http</span><br><span class="line"><span class="meta">#</span>acl Safe_ports port 21         # ftp</span><br><span class="line">acl Safe_ports port 443         # https</span><br><span class="line"><span class="meta">#</span>acl Safe_ports port 70         # gopher</span><br><span class="line"><span class="meta">#</span>acl Safe_ports port 210                # wais</span><br><span class="line"><span class="meta">#</span>acl Safe_ports port 1025-65535 # unregistered ports</span><br><span class="line"><span class="meta">#</span>acl Safe_ports port 280                # http-mgmt</span><br><span class="line"><span class="meta">#</span>acl Safe_ports port 488                # gss-http</span><br><span class="line"><span class="meta">#</span>acl Safe_ports port 591                # filemaker</span><br><span class="line"><span class="meta">#</span>acl Safe_ports port 777                # multiling http</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="2">
+<li><h4 id="修改默认监听端口"><a href="#修改默认监听端口" class="headerlink" title="修改默认监听端口"></a>修改默认监听端口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http_port 9000</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="3">
+<li><h4 id="禁止所有访问"><a href="#禁止所有访问" class="headerlink" title="禁止所有访问"></a>禁止所有访问</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http_access deny all</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="4">
+<li><h4 id="增加用户认证"><a href="#增加用户认证" class="headerlink" title="增加用户认证"></a>增加用户认证</h4><h6 id="检查一下ncsa路径是否和一致"><a href="#检查一下ncsa路径是否和一致" class="headerlink" title="检查一下ncsa路径是否和一致"></a>检查一下ncsa路径是否和一致</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -ql squid | grep ncsa_auth</span><br><span class="line">/usr/lib64/squid/basic_ncsa_auth</span><br><span class="line">/usr/share/man/man8/basic_ncsa_auth.8.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">auth_param basic program /usr/lib64/squid/basic_ncsa_auth /etc/squid/passwd</span><br><span class="line">auth_param basic children 5</span><br><span class="line">auth_param basic credentialsttl 2 hours</span><br><span class="line">auth_param basic realm Example.com&apos;s Squid proxy-caching</span><br><span class="line">acl auth_user proxy_auth REQUIRED</span><br><span class="line">http_access allow auth_user</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">htpasswd -c /etc/squid/passwd tangbull</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="5">
+<li><h4 id="访问日志配置"><a href="#访问日志配置" class="headerlink" title="访问日志配置"></a>访问日志配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">access_log /var/log/squid/access.log</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="3">
+<li><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3></li>
+</ol>
+<p>配置代理Linux平台</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export HTTP_PROXY=http://用户名:密码@squid服务器域名或者ip:9000</span><br><span class="line">export HTTPS_PROXY=http://用户名:密码@squid服务器域名或者ip:9000</span><br></pre></td></tr></table></figure>
+<ul>
+<li>端口和上面配置的相对应</li>
+<li>密码有特殊字符<br>解决办法 就是将特殊字符转换成 ASIIC 码形式输入, 以 % + Hex 形式(0x忽略).</li>
+<li><p>参考链接: ASCII Reference</p>
+</li>
+<li><p>比如常见的会出现在密码中的特殊字符:</p>
+</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~ : 0x7E,         ! : 0x21    </span><br><span class="line">@ : 0x40,         # : 0x23  </span><br><span class="line">$ : 0x24,         % : 0x25  </span><br><span class="line">^ : 0x5E,         &amp; : 0x26</span><br></pre></td></tr></table></figure>
 
 
                 
