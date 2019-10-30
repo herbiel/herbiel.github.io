@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,8 +19,7 @@
 2.安装Let’s Encrypt SSL证书申请工具
 # yum install epel-release
 
-# yum install certbot
-3.先做好域名解析到">
+# yum install certbot3.先做好域名解析到本">
     
 
     <!--Author-->
@@ -41,8 +40,7 @@
 2.安装Let’s Encrypt SSL证书申请工具
 # yum install epel-release
 
-# yum install certbot
-3.先做好域名解析到">
+# yum install certbot3.先做好域名解析到本">
     
 
     <!--Open Graph Site Name-->
@@ -213,8 +211,7 @@
 <p>2.安装Let’s Encrypt SSL证书申请工具</p>
 <pre><code># yum install epel-release
 
-# yum install certbot
-</code></pre><p>3.先做好域名解析到本地的服务器</p>
+# yum install certbot</code></pre><p>3.先做好域名解析到本地的服务器</p>
 <p>用nslookup或者dig去检查，这个域名不能挂有80或者443端口服务</p>
 <p>执行命令之前关闭 nginx 或 ocserv 等占用 80 和 443 端口的服务，不然 standalone 模式会报错</p>
 <pre><code># netstat -lntpu|egrep &apos;80|443&apos;
@@ -223,22 +220,20 @@ tcp    0     0 0.0.0.0:80    0.0.0.0:*    LISTEN    12245/nginx: master
 # service nginx stop
 Redirecting to /bin/systemctl stop  nginx.service
 
-# netstat -lntpu|egrep &apos;80|443&apos;
-</code></pre><p>申请命令</p>
-<pre><code>certbot certonly --standalone      --email  你的邮箱     -d 你的域名       --user-agent &quot;&quot; --noninteractive        --agree-tos          --text --verbose --debug
-</code></pre><p>申请成功</p>
+# netstat -lntpu|egrep &apos;80|443&apos;</code></pre><p>申请命令</p>
+<pre><code>certbot certonly --standalone      --email  你的邮箱     -d 你的域名       --user-agent &quot;&quot; --noninteractive        --agree-tos          --text --verbose --debug</code></pre><p>申请成功</p>
 <p>4.配置ocserv证书</p>
 <pre><code>vi /etc/ocserv/ocserv.conf
-</code></pre><p>重启ocserv</p>
-<pre><code>systemctl restart ocserv
-</code></pre><p>5.证书续期</p>
+
+server-cert = /etc/letsencrypt/live/域名/fullchain.pem
+server-key = /etc/letsencrypt/live/域名/privkey.pem</code></pre><p>重启ocserv</p>
+<pre><code>systemctl restart ocserv</code></pre><p>5.证书续期</p>
 <p>crond中添加一条计划任务</p>
 <p>restart_ocserv 脚本是重启ocserv的脚本</p>
 <pre><code>#!/bin/sh
 systemctl restart ocserv
 
-0 3 */7 * *  /usr/bin/certbot renew --renew-hook &quot;/usr/bin/restart_ocserv&quot;
-</code></pre>
+0 3 */7 * *  /usr/bin/certbot renew --renew-hook &quot;/usr/bin/restart_ocserv&quot;</code></pre>
 
                 
             </div>
@@ -256,7 +251,7 @@ systemctl restart ocserv
 </article>
 
     <!-- Footer -->
-    <hr>
+    <hr />
 
 <!-- Footer -->
 <footer>

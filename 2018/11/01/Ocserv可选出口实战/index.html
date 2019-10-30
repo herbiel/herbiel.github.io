@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,9 +17,8 @@
 1.实现原理拓扑 
 
 2.HK-VPS安装ocserv 
-yum install epel-release
-centos7 下面直接用
-yum install ocse">
+yum install epel-releasecentos7 下面直接用
+yum install ocser">
     
 
     <!--Author-->
@@ -38,9 +37,8 @@ yum install ocse">
 1.实现原理拓扑 
 
 2.HK-VPS安装ocserv 
-yum install epel-release
-centos7 下面直接用
-yum install ocse">
+yum install epel-releasecentos7 下面直接用
+yum install ocser">
     
 
     <!--Open Graph Site Name-->
@@ -223,58 +221,47 @@ yum install ocse">
 <p>1.实现原理拓扑 </p>
 <p><img src="/images/image_5bdaa67f_34f21625.png" alt="img"></p>
 <p>2.HK-VPS安装ocserv </p>
-<pre><code>yum install epel-release
-</code></pre><p>centos7 下面直接用</p>
-<pre><code>yum install ocserv -y
-</code></pre><p>安装好ocserv,配置文件如下 </p>
+<pre><code>yum install epel-release</code></pre><p>centos7 下面直接用</p>
+<pre><code>yum install ocserv -y</code></pre><p>安装好ocserv,配置文件如下 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">listen-host = 0.0.0.0 	</span><br><span class="line"></span><br><span class="line">tcp-port = 443 	</span><br><span class="line"></span><br><span class="line">udp-port = 443 	</span><br><span class="line"></span><br><span class="line">run-as-user = ocserv 	</span><br><span class="line"></span><br><span class="line">run-as-group = ocserv 	</span><br><span class="line"></span><br><span class="line">socket-file = ocserv.sock 	</span><br><span class="line"></span><br><span class="line">chroot-dir = /var/lib/ocserv 	</span><br><span class="line"></span><br><span class="line">isolate-workers = true 	</span><br><span class="line"></span><br><span class="line">max-clients = 16 	</span><br><span class="line"></span><br><span class="line">max-same-clients = 2 	</span><br><span class="line"></span><br><span class="line">keepalive = 32400 	</span><br><span class="line"></span><br><span class="line">dpd = 90 	</span><br><span class="line"></span><br><span class="line">mobile-dpd = 1800 	</span><br><span class="line"></span><br><span class="line">switch-to-tcp-timeout = 25 	</span><br><span class="line"></span><br><span class="line">try-mtu-discovery = false 	</span><br><span class="line"></span><br><span class="line">server-cert = /etc/ocserv/key/server-cert.pem 	</span><br><span class="line"></span><br><span class="line">server-key = /etc/ocserv/key/server-key.pem 	</span><br><span class="line"></span><br><span class="line">ca-cert = /etc/pki/ocserv/cacerts/ca.crt 	</span><br><span class="line"></span><br><span class="line">cert-user-oid = 0.9.2342.19200300.100.1.1 	</span><br><span class="line"></span><br><span class="line">tls-priorities = &quot;NORMAL:%SERVER_PRECEDENCE:%COMPAT:-VERS-SSL3.0&quot; 	</span><br><span class="line"></span><br><span class="line">auth-timeout = 240 	</span><br><span class="line"></span><br><span class="line">min-reauth-time = 300 	</span><br><span class="line"></span><br><span class="line">max-ban-score = 50 	</span><br><span class="line"></span><br><span class="line">ban-reset-time = 300 	</span><br><span class="line"></span><br><span class="line">cookie-timeout = 300 	</span><br><span class="line"></span><br><span class="line">deny-roaming = false 	</span><br><span class="line"></span><br><span class="line">rekey-time = 172800 	</span><br><span class="line"></span><br><span class="line">rekey-method = ssl 	</span><br><span class="line"></span><br><span class="line">use-occtl = true 	</span><br><span class="line"></span><br><span class="line">pid-file = /var/run/ocserv.pid 	</span><br><span class="line"></span><br><span class="line">device = vpns 	</span><br><span class="line"></span><br><span class="line">predictable-ips = true 	</span><br><span class="line"></span><br><span class="line">default-domain = example.com 	</span><br><span class="line"></span><br><span class="line">ipv4-network = 10.8.2.0 	</span><br><span class="line"></span><br><span class="line">ipv4-netmask = 255.255.255.0 	</span><br><span class="line"></span><br><span class="line">dns = 8.8.8.8 	</span><br><span class="line"></span><br><span class="line">ping-leases = false 	</span><br><span class="line"></span><br><span class="line">no-route = 10.8.2.0/255.255.255.0 	</span><br><span class="line"></span><br><span class="line">select-group = HK 	</span><br><span class="line"></span><br><span class="line">select-group = Indonesia-1 	</span><br><span class="line"></span><br><span class="line">select-group = Indonesia-2 	</span><br><span class="line"></span><br><span class="line">select-group = Singapore  	</span><br><span class="line"></span><br><span class="line">default-select-group = HK 	</span><br><span class="line"></span><br><span class="line">auto-select-group = true 	</span><br><span class="line"></span><br><span class="line">config-per-group = /etc/ocserv/config-per-group/ 	</span><br><span class="line"></span><br><span class="line">cisco-client-compat = true 	</span><br><span class="line"></span><br><span class="line">dtls-legacy = true 	</span><br><span class="line"></span><br><span class="line">user-profile = profile.xml</span><br></pre></td></tr></table></figure>
+
 <p>config-per-group文件下面放这几个组配置的文件 </p>
 <p>HK  Indonesia   Singapore </p>
-<pre><code>cat HK  
-</code></pre><p>ipv4-network = 10.23.20.0/24     </p>
+<pre><code>cat HK  </code></pre><p>ipv4-network = 10.23.20.0/24     </p>
 <p>添加用户的时候加分组  </p>
-<pre><code>ocpasswd -c /etc/ocserv/ocpasswd -g &quot;HK,Indonesia&quot; test 
-</code></pre><p>3.建立ip-tunnel </p>
+<pre><code>ocpasswd -c /etc/ocserv/ocpasswd -g &quot;HK,Indonesia&quot; test </code></pre><p>3.建立ip-tunnel </p>
 <pre><code>ip tunnel add Indonesia-tun mode ipip remote 103.200.2.100 local 45.199.10.100     
 ifconfig Indonesia-tun 10.23.1.1 netmask 255.255.255.0     
 
 ip tunnel add singapore-tun mode ipip remote 195.222.22.100 local 45.199.10.10    
 
-ifconfig singapore-tun 10.23.2.1 netmask 255.255.255.0      
-</code></pre><p>4.配置策略路由 </p>
+ifconfig singapore-tun 10.23.2.1 netmask 255.255.255.0      </code></pre><p>4.配置策略路由 </p>
 <pre><code>ip route add default via 10.23.1.2 table 100 
 
 ip rule add from 10.23.20.0/24 table 100 
 
 ip route add default via 10.23.2.2 table 200 
 
-ip rule add from 10.23.30.0/24 table 200 
-</code></pre><p>5.NAT </p>
+ip rule add from 10.23.30.0/24 table 200 </code></pre><p>5.NAT </p>
 <p>HK走香港本地出去的，所以要对10.23.10.0/24做nat </p>
 <pre><code>iptables -t nat -A POSTROUTING -s 10.23.10.0/24 ! -d 10.23.0.0/16 -j SNAT --to-source 45.199.10.100 
 
-**iptables-save** 
-</code></pre><p>6.开启ip转发 </p>
+**iptables-save** </code></pre><p>6.开启ip转发 </p>
 <pre><code>echo &quot;1&quot; &gt; /proc/sys/net/ipv4/ip_forward     
 
 echo &quot;0&quot; &gt; /proc/sys/net/ipv4/conf/indonesia-tun/rp_filter      
 
 echo 0 &gt; /proc/sys/net/ipv4/conf/eth0/rp_filter     
 
-echo &quot;0&quot; &gt; /proc/sys/net/ipv4/conf/singapore-tun/rp_filter 
-</code></pre><p>7.在海外服务器上配置(以Indonesia服务器为例子) </p>
+echo &quot;0&quot; &gt; /proc/sys/net/ipv4/conf/singapore-tun/rp_filter </code></pre><p>7.在海外服务器上配置(以Indonesia服务器为例子) </p>
 <p>建立tunnel </p>
-<pre><code>ip tunnel add Indonesia-tun mode ipip remote 45.199.10.100 local 103.200.2.100 ifconfig Indonesia-tun 10.23.1.2 netmask 255.255.255.0
-</code></pre><p>写路由 </p>
-<pre><code>ip route add 10.23.20.0/24 via 10.23.1.2
-</code></pre><p>Nat配置 </p>
-<pre><code>iptables -t nat -A POSTROUTING -s 10.23.20.0/24 ! -d 10.23.0.0/16 -j SNAT --to-source 103.200.2.100 
-</code></pre><p>iptables-save </p>
+<pre><code>ip tunnel add Indonesia-tun mode ipip remote 45.199.10.100 local 103.200.2.100 ifconfig Indonesia-tun 10.23.1.2 netmask 255.255.255.0</code></pre><p>写路由 </p>
+<pre><code>ip route add 10.23.20.0/24 via 10.23.1.2</code></pre><p>Nat配置 </p>
+<pre><code>iptables -t nat -A POSTROUTING -s 10.23.20.0/24 ! -d 10.23.0.0/16 -j SNAT --to-source 103.200.2.100 </code></pre><p>iptables-save </p>
 <p>开启转发 </p>
 <pre><code> echo &quot;1&quot; &gt; /proc/sys/net/ipv4/ip_forward          
 
-echo &quot;0&quot; &gt; /proc/sys/net/ipv4/conf/indonesia-tun/rp_filter 
-</code></pre>
+echo &quot;0&quot; &gt; /proc/sys/net/ipv4/conf/indonesia-tun/rp_filter </code></pre>
 
                 
             </div>
@@ -292,7 +279,7 @@ echo &quot;0&quot; &gt; /proc/sys/net/ipv4/conf/indonesia-tun/rp_filter
 </article>
 
     <!-- Footer -->
-    <hr>
+    <hr />
 
 <!-- Footer -->
 <footer>

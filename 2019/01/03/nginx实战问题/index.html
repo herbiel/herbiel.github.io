@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -227,6 +227,7 @@ nginx只允许域名不允许ip
 </li>
 <li><p>nginx只允许域名不允许ip</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    listen 8080;</span><br><span class="line">    server_name nginx.myi-cloud.com;</span><br><span class="line">    root /var/www/html/study;</span><br><span class="line">    location /&#123;</span><br><span class="line">        index index.html;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen 8080 default_server;</span><br><span class="line">    server_name _;</span><br><span class="line">    return 403;</span><br></pre></td></tr></table></figure>
+
 <p>}</p>
 </li>
 <li><p>配置https</p>
@@ -234,6 +235,7 @@ nginx只允许域名不允许ip
 </li>
 <li><p>配置网页密码认证</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> yum -y install httpd-tools</span><br><span class="line"> htpasswd -c -m .htpasswd habi</span><br><span class="line"></span><br><span class="line">server&#123;</span><br><span class="line">    listen 8080;</span><br><span class="line">    server_name nginx.myi-cloud.com;</span><br><span class="line">    root /var/www/html/study;</span><br><span class="line">    auth_basic &quot;Please input password&quot;;</span><br><span class="line">    auth_basic_user_file /etc/nginx/.htpasswd;</span><br><span class="line">    location /&#123;</span><br><span class="line">        index index.html;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
 
@@ -254,7 +256,7 @@ nginx只允许域名不允许ip
 </article>
 
     <!-- Footer -->
-    <hr>
+    <hr />
 
 <!-- Footer -->
 <footer>

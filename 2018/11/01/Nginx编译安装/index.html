@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,9 +15,8 @@
     
         <meta name="description" content="配置之前请关闭selinux，关闭iptable （线上） 
 1.依赖包安装 
-yum install pcre pcre-devel openssl openssl-devel gcc gcc+ -y 
-2.创建相关用户和文件夹 
-useradd nginx -s /sbin/nologin -M">
+yum install pcre pcre-devel openssl openssl-devel gcc gcc+ -y 2.创建相关用户和文件夹 
+useradd nginx -s /sbin/nologin -M ">
     
 
     <!--Author-->
@@ -34,9 +33,8 @@ useradd nginx -s /sbin/nologin -M">
     
         <meta property="og:description" content="配置之前请关闭selinux，关闭iptable （线上） 
 1.依赖包安装 
-yum install pcre pcre-devel openssl openssl-devel gcc gcc+ -y 
-2.创建相关用户和文件夹 
-useradd nginx -s /sbin/nologin -M">
+yum install pcre pcre-devel openssl openssl-devel gcc gcc+ -y 2.创建相关用户和文件夹 
+useradd nginx -s /sbin/nologin -M ">
     
 
     <!--Open Graph Site Name-->
@@ -217,23 +215,18 @@ useradd nginx -s /sbin/nologin -M">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <p>配置之前请关闭selinux，关闭iptable （线上） </p>
 <p>1.依赖包安装 </p>
-<pre><code>yum install pcre pcre-devel openssl openssl-devel gcc gcc+ -y 
-</code></pre><p>2.创建相关用户和文件夹 </p>
+<pre><code>yum install pcre pcre-devel openssl openssl-devel gcc gcc+ -y </code></pre><p>2.创建相关用户和文件夹 </p>
 <pre><code>useradd nginx -s /sbin/nologin -M 
 
-mkdir -p /application/nginx/ 
-</code></pre><p>3.编译安装nginx </p>
+mkdir -p /application/nginx/ </code></pre><p>3.编译安装nginx </p>
 <p>下载nginx包:</p>
-<pre><code>wget -q https://nginx.org/download/nginx-1.12.2.tar.gz 
-</code></pre><p>解压:</p>
-<pre><code>tar zxf nginx-1.12.2.tar.gz 
-</code></pre><p>进入目录: </p>
+<pre><code>wget -q https://nginx.org/download/nginx-1.12.2.tar.gz </code></pre><p>解压:</p>
+<pre><code>tar zxf nginx-1.12.2.tar.gz </code></pre><p>进入目录: </p>
 <pre><code>cd nginx-1.12.2 
 
 ./configure --user=nginx --group=nginx --prefix=/application/nginx/ --with-http_stub_status_module --with-http_ssl_module 
 
-make &amp;&amp; make install 
-</code></pre><p>4.启动nginx </p>
+make &amp;&amp; make install </code></pre><p>4.启动nginx </p>
 <p>当前目录: </p>
 <p><img src="/images/image_5bdb1875_3f46f144.png" alt="img"> </p>
 <p>sbin/nginx -t 检查配置文件是否正常 </p>
@@ -262,7 +255,7 @@ make &amp;&amp; make install
 </article>
 
     <!-- Footer -->
-    <hr>
+    <hr />
 
 <!-- Footer -->
 <footer>

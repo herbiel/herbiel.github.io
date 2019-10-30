@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -244,14 +244,11 @@ LVS相关术语
 <p>  服务器         ip                                   角色<br>  DS服务器       192.168.96.140 vip:192.168.96.140    调度服务器<br>  RS1真实服务器    192.168.96.141                       真实服务器<br>  RS2真实服务器    192.168.96.142                       真实服务器</p>
 <p>所有服务器关闭firewalld selinux iptables清空 </p>
 <p>DS上配置 </p>
-<pre><code>yum -y install ipvsadm 
-</code></pre><p>① 开启一个基于80端口的虚拟服务vip，调度方式为wrr     </p>
-<pre><code>ipvsadm -A -t 192.168.1.100:80 -s wrr
-</code></pre><p>② 配置web服务后端real server  为nat工作方式  权重为1 </p>
+<pre><code>yum -y install ipvsadm </code></pre><p>① 开启一个基于80端口的虚拟服务vip，调度方式为wrr     </p>
+<pre><code>ipvsadm -A -t 192.168.1.100:80 -s wrr</code></pre><p>② 配置web服务后端real server  为nat工作方式  权重为1 </p>
 <pre><code>ipvsadm -a -t 192.168.1.100:80 -r 192.168.96.141:80 -m -w 1          
 
-ipvsadm -a -t 192.168.1.100:80 -r 192.168.96.142:80 -m -w 1
-</code></pre><p>③ 修改内核配置，开启路由转发          </p>
+ipvsadm -a -t 192.168.1.100:80 -r 192.168.96.142:80 -m -w 1</code></pre><p>③ 修改内核配置，开启路由转发          </p>
 <p>vim /etc/sysctl.conf 改一行          </p>
 <p>net.ipv4.ip_forward = 1                     </p>
 <p>sysctl -p 读一些，使其生效      </p>
@@ -279,7 +276,7 @@ ipvsadm -a -t 192.168.1.100:80 -r 192.168.96.142:80 -m -w 1
 </article>
 
     <!-- Footer -->
-    <hr>
+    <hr />
 
 <!-- Footer -->
 <footer>

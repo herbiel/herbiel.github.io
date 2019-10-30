@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,8 +18,11 @@
 
 
 
+
+
+
 配置
-关闭不必要的端口 (只保留80和443)12345678910acl Safe_ports port 80          # http#acl Safe_ports port 21         ">
+关闭不必要的端口 (只保留80和443)12345678910acl Safe_ports port 80          # http#acl Safe_ports port 21      ">
     
 
     <!--Author-->
@@ -39,8 +42,11 @@
 
 
 
+
+
+
 配置
-关闭不必要的端口 (只保留80和443)12345678910acl Safe_ports port 80          # http#acl Safe_ports port 21         ">
+关闭不必要的端口 (只保留80和443)12345678910acl Safe_ports port 80          # http#acl Safe_ports port 21      ">
     
 
     <!--Open Graph Site Name-->
@@ -221,31 +227,51 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <h1 id="squid正向代理"><a href="#squid正向代理" class="headerlink" title="squid正向代理"></a>squid正向代理</h1><ol>
 <li><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install squid httpd-tools</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="2">
 <li><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ol>
 <li><h4 id="关闭不必要的端口-只保留80和443"><a href="#关闭不必要的端口-只保留80和443" class="headerlink" title="关闭不必要的端口 (只保留80和443)"></a>关闭不必要的端口 (只保留80和443)</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">acl Safe_ports port 80          # http</span><br><span class="line"><span class="meta">#</span>acl Safe_ports port 21         # ftp</span><br><span class="line">acl Safe_ports port 443         # https</span><br><span class="line"><span class="meta">#</span>acl Safe_ports port 70         # gopher</span><br><span class="line"><span class="meta">#</span>acl Safe_ports port 210                # wais</span><br><span class="line"><span class="meta">#</span>acl Safe_ports port 1025-65535 # unregistered ports</span><br><span class="line"><span class="meta">#</span>acl Safe_ports port 280                # http-mgmt</span><br><span class="line"><span class="meta">#</span>acl Safe_ports port 488                # gss-http</span><br><span class="line"><span class="meta">#</span>acl Safe_ports port 591                # filemaker</span><br><span class="line"><span class="meta">#</span>acl Safe_ports port 777                # multiling http</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 </li>
 </ol>
 <ol start="2">
 <li><h4 id="修改默认监听端口"><a href="#修改默认监听端口" class="headerlink" title="修改默认监听端口"></a>修改默认监听端口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http_port 9000</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="3">
 <li><h4 id="禁止所有访问"><a href="#禁止所有访问" class="headerlink" title="禁止所有访问"></a>禁止所有访问</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http_access deny all</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="4">
 <li><h4 id="增加用户认证"><a href="#增加用户认证" class="headerlink" title="增加用户认证"></a>增加用户认证</h4><h6 id="检查一下ncsa路径是否和一致"><a href="#检查一下ncsa路径是否和一致" class="headerlink" title="检查一下ncsa路径是否和一致"></a>检查一下ncsa路径是否和一致</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -ql squid | grep ncsa_auth</span><br><span class="line">/usr/lib64/squid/basic_ncsa_auth</span><br><span class="line">/usr/share/man/man8/basic_ncsa_auth.8.gz</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">auth_param basic program /usr/lib64/squid/basic_ncsa_auth /etc/squid/passwd</span><br><span class="line">auth_param basic children 5</span><br><span class="line">auth_param basic credentialsttl 2 hours</span><br><span class="line">auth_param basic realm Example.com&apos;s Squid proxy-caching</span><br><span class="line">acl auth_user proxy_auth REQUIRED</span><br><span class="line">http_access allow auth_user</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">htpasswd -c /etc/squid/passwd tangbull</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="5">
 <li><h4 id="访问日志配置"><a href="#访问日志配置" class="headerlink" title="访问日志配置"></a>访问日志配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">access_log /var/log/squid/access.log</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="3">
@@ -253,15 +279,19 @@
 </ol>
 <p>配置代理Linux平台</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export HTTP_PROXY=http://用户名:密码@squid服务器域名或者ip:9000</span><br><span class="line">export HTTPS_PROXY=http://用户名:密码@squid服务器域名或者ip:9000</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>端口和上面配置的相对应</li>
-<li>密码有特殊字符<br>解决办法 就是将特殊字符转换成 ASIIC 码形式输入, 以 % + Hex 形式(0x忽略).</li>
+<li><p>端口和上面配置的相对应</p>
+</li>
+<li><p>密码有特殊字符<br>解决办法 就是将特殊字符转换成 ASIIC 码形式输入, 以 % + Hex 形式(0x忽略).</p>
+</li>
 <li><p>参考链接: ASCII Reference</p>
 </li>
 <li><p>比如常见的会出现在密码中的特殊字符:</p>
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~ : 0x7E,         ! : 0x21    </span><br><span class="line">@ : 0x40,         # : 0x23  </span><br><span class="line">$ : 0x24,         % : 0x25  </span><br><span class="line">^ : 0x5E,         &amp; : 0x26</span><br></pre></td></tr></table></figure>
+
 
 
                 
@@ -280,7 +310,7 @@
 </article>
 
     <!-- Footer -->
-    <hr>
+    <hr />
 
 <!-- Footer -->
 <footer>

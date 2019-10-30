@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -208,12 +208,15 @@
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <h3 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h3><h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install java-1.8.0-openjdk-devel wget -y</span><br><span class="line">wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.5.1.rpm</span><br><span class="line">rpm -ivh elasticsearch-6.5.1.rpm</span><br></pre></td></tr></table></figure>
+
 <h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><p>vi /etc/elasticsearch/jvm.options 修改分配的空间大小</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-Xms1g #初始化大小</span><br><span class="line">-Xmx1g #最大大小</span><br></pre></td></tr></table></figure>
+
 <p>注意：不要超过32G，如果空间大，多跑几个实例，不要让一个实例太大内存</p>
 <p>生产环境，建议都给32</p>
 <p>vi /etc/elasticsearch/elasticsearch.yml</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cluster.name: alongels    #集群名字</span><br><span class="line">node.name: els   #节点名</span><br><span class="line">path.data: /els/data   #索引路径</span><br><span class="line">path.logs: /els/logs    #日志存储路径</span><br><span class="line">network.host: 172.10.8.20   #对外通信的地址，依次修改为自己机器对外的IP</span><br><span class="line">#http.port: 9200    #默认端口</span><br></pre></td></tr></table></figure>
+
 <p>mkdir -pv /els/{data,logs} &amp;&amp; chown -R elasticsearch.elasticsearch /els/*<br>systemctl start elasticsearch<br>netstat -tunlp </p>
 <p>只看9200和9300端口就可以了,9100是前端端口,完成下面前端配置才有9100端口</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fxvzu83bw1j312s08gdho.jpg" alt="image-20181205172402977"></p>
@@ -221,41 +224,59 @@
 <p><a href="https://github.com/mobz/elasticsearch-head" target="_blank" rel="noopener">https://github.com/mobz/elasticsearch-head</a> 这里有github上步骤</p>
 <p>安装head 插件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone git://github.com/mobz/elasticsearch-head.git</span><br><span class="line">cd elasticsearch-head/</span><br></pre></td></tr></table></figure>
+
 <p>安装npm 包</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install npm</span><br></pre></td></tr></table></figure>
+
 <p> 安装npm 的各种模块</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@els elasticsearch-head]$ npm install</span><br></pre></td></tr></table></figure>
+
 <p>中间会出错，提示解压一个包失败，手动解开就好</p>
 <p>Error: Command failed: tar jxf /tmp/phantomjs/phantomjs-2.1.1-linux-x86_64.tar.bz2</p>
 <p>解决办法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bunzip2 /tmp/phantomjs/phantomjs-2.1.1-linux-x86_64.tar.bz2</span><br><span class="line"></span><br><span class="line">tar -xvf /tmp/phantomjs/phantomjs-2.1.1-linux-x86_64.tar</span><br></pre></td></tr></table></figure>
+
 <p>[root@els elasticsearch-head]$</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
 <p>再次修改配置文件，在最后加一个配置段</p>
 <p>/etc/elasticsearch/elasticsearch.yml</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># ------------------------ Enable CORS in elasticsearch -------------------------</span><br><span class="line">http.cors.enabled: true</span><br><span class="line">http.cors.allow-origin: &quot;*&quot;      #授所有权限</span><br></pre></td></tr></table></figure>
+
+
+
 <p>运行head(路径不能错)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@els elasticsearch-head]# nohup npm run start &amp;</span><br></pre></td></tr></table></figure>
+
 <p> 后台运行</p>
 <p>重启elasticsearch 服务，打开了9100 端口</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@els ~]$ service elasticsearch restart</span><br></pre></td></tr></table></figure>
+
 <h3 id="Logstash"><a href="#Logstash" class="headerlink" title="Logstash"></a>Logstash</h3><h5 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install java-1.8.0-openjdk-devel wget -y</span><br><span class="line">wget  https://artifacts.elastic.co/downloads/logstash/logstash-6.5.1.rpm</span><br><span class="line">rpm -ivh logstash-6.5.1.rpm</span><br></pre></td></tr></table></figure>
+
 <h5 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h5><p>cd /etc/logstash/conf.d/</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vi test.conf</span><br><span class="line"></span><br><span class="line">input &#123;</span><br><span class="line">        stdin &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">output &#123;</span><br><span class="line">       stdout &#123;</span><br><span class="line">       codec =&gt; rubydebug</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>检查语法 </p>
 <p>logstash -f test.conf -t </p>
 <p>出现oK就是正常的</p>
 <p>具体实际环境配置见ELK-redis 实战里面的配置</p>
 <p>logstash -f test.conf &amp; 后台启动</p>
 <h3 id="Kibana"><a href="#Kibana" class="headerlink" title="Kibana"></a>Kibana</h3><h5 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install java-1.8.0-openjdk-devel wget -y</span><br><span class="line">wget https://artifacts.elastic.co/downloads/kibana/kibana-6.5.1-x86_64.rpm</span><br><span class="line">rpm -ivh kibana-6.5.1-x86_64.rpm</span><br></pre></td></tr></table></figure>
+
 <h5 id="配置-2"><a href="#配置-2" class="headerlink" title="配置"></a>配置</h5><p>vi /etc/kibana/kibana.yml</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server.port: 5601</span><br><span class="line">server.host: &quot;0.0.0.0&quot;</span><br><span class="line">server.name: &quot;kibana&quot;</span><br><span class="line">elasticsearch.url: &quot;http://172.10.8.20:9200&quot;</span><br></pre></td></tr></table></figure>
+
 <h3 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h3><h5 id="安装-3"><a href="#安装-3" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install epel -y</span><br><span class="line">yum install redis -y</span><br></pre></td></tr></table></figure>
+
 <h5 id="配置-3"><a href="#配置-3" class="headerlink" title="配置"></a>配置</h5><p>vi /etc/redis.conf</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bind 0.0.0.0 　　#监听所有端口</span><br><span class="line">requirepass testlinux.io 　　#加密码，为了安全运行</span><br></pre></td></tr></table></figure>
+
 <h3 id="filebeat"><a href="#filebeat" class="headerlink" title="filebeat"></a>filebeat</h3><h5 id="安装-4"><a href="#安装-4" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.5.1-x86_64.rpm</span><br><span class="line">rpm -ivh filebeat-6.5.1-x86_64.rpm</span><br></pre></td></tr></table></figure>
+
 <h5 id="配置-4"><a href="#配置-4" class="headerlink" title="配置"></a>配置</h5><p> vim /etc/filebeat/filebeat.yml</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">filebeat.prospectors:</span><br><span class="line">- input_type: log</span><br><span class="line">  paths:</span><br><span class="line">    - /var/log/httpd/*log</span><br><span class="line">#----------------------------- Redis output --------------------------------</span><br><span class="line">output.redis:</span><br><span class="line">  hosts: [&quot;172.10.8.50&quot;]</span><br><span class="line">  password: &quot;testlinux.io&quot;</span><br><span class="line">  key: &quot;apachelogs&quot;</span><br><span class="line">  datatype: &quot;list&quot;</span><br><span class="line">  db: 0</span><br><span class="line">  timeout: 5</span><br></pre></td></tr></table></figure>
+
 
 
                 
@@ -274,7 +295,7 @@
 </article>
 
     <!-- Footer -->
-    <hr>
+    <hr />
 
 <!-- Footer -->
 <footer>

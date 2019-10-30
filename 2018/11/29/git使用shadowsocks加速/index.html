@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,10 +16,13 @@
         <meta name="description" content="shadowsocks server端安装部署好
 OS:centos 7
 1yum install epel-release -y
+
 1yum install python-pip -y
+
 1pip install shadowsocks
+
 配置完下面的ip 端口 和密码就可以了
-1cat /etc/sh">
+1cat /etc">
     
 
     <!--Author-->
@@ -37,10 +40,13 @@ OS:centos 7
         <meta property="og:description" content="shadowsocks server端安装部署好
 OS:centos 7
 1yum install epel-release -y
+
 1yum install python-pip -y
+
 1pip install shadowsocks
+
 配置完下面的ip 端口 和密码就可以了
-1cat /etc/sh">
+1cat /etc">
     
 
     <!--Open Graph Site Name-->
@@ -223,10 +229,14 @@ OS:centos 7
 <li><p>shadowsocks server端安装部署好</p>
 <p>OS:centos 7</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release -y</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install python-pip -y</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install shadowsocks</span><br></pre></td></tr></table></figure>
+
 <p>配置完下面的ip 端口 和密码就可以了</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/shadowsocks.config</span><br></pre></td></tr></table></figure>
+
 <p>{<br>​    “server”:”xxx.xxx.xxx.xxx”,<br>​    “server_port”:服务器端口,<br>​    “local_port”:本地代理端口,<br>​    “password”:”xxxxxx”,<br>​    “timeout”:600,<br>​    “method”:”aes-256-cfb”<br>}</p>
 <p>启动服务</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c /etc/shadowsocks.json -d start</span><br></pre></td></tr></table></figure>
@@ -237,10 +247,12 @@ OS:centos 7
 </li>
 <li><p>配置git代理加速</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy &apos;socks5://127.0.0.1:本地代理端口&apos;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global https.proxy &apos;socks5://127.0.0.1:本地代理端口&apos;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>测试</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global -l</span><br></pre></td></tr></table></figure>
+
 <p>可以git clone测试一下，如果提示本地代理端口错误，就检查shadowsocks链接是否错误</p>
 </li>
 </ol>
@@ -262,7 +274,7 @@ OS:centos 7
 </article>
 
     <!-- Footer -->
-    <hr>
+    <hr />
 
 <!-- Footer -->
 <footer>

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -219,8 +219,7 @@
 <th>ip地址</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>DS服务器LVS</td>
 <td>vip:192.168.1.220 DIP:172.16.10.10</td>
 </tr>
@@ -232,12 +231,13 @@
 <td>RS2</td>
 <td>RIP:172.16.10.222</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>LVS-DS</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum install ipvsadm</span><br><span class="line">iptables -F &amp;&amp; setenforce 0</span><br><span class="line">ipvsadm -A -t 192.168.1.220:80 -s wrr</span><br><span class="line">ipvsadm -a -t 192.168.1.220:80 -r 172.16.10.221:80 -m -w 1</span><br><span class="line">ipvsadm -a -t 192.168.1.220:80 -r 172.16.10.222:80 -m -w 1</span><br><span class="line">echo &quot;net.ipv4.ip_forward = 1&quot; &gt;&gt; /etc/sysctl.conf</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+
 <p>LVS-RS</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip route add default via 172.16.10.10</span><br></pre></td></tr></table></figure>
+
 <p>总结</p>
 <blockquote>
 <p>LVS dr服务器需要两张网卡,DIP网卡和VIP网卡</p>
@@ -258,8 +258,7 @@
 <th>ip地址</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>DS</td>
 <td>VIP:172.16.10.250 DIP:10.23.23.10</td>
 </tr>
@@ -271,19 +270,21 @@
 <td>RS2</td>
 <td>RIP:10.23.23.30</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><img src="../images/1546487486188-1546498122809.png" alt="546487486188"></p>
 <p>centos路由器配置</p>
 <p><img src="../images/1546498681732.png" alt="1546498681732"></p>
 <p><img src="../images/1546498921192.png" alt="1546498921192"></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo "1" &gt; /etc/sys/net/ipv4/ip_forward</span><br><span class="line">route add -host 172.16.10.250 dev eno67109432</span><br></pre></td></tr></table></figure>
+
 <p>DS配置</p>
 <p><img src="../images/1546498898323.png" alt="1546498898323"></p>
 <p><img src="../images/1546498946983.png" alt="1546498946983"></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eno16777736:0 172.16.10.250 broadcast 172.16.10.250 netmask 255.255.255.255 up</span><br><span class="line"></span><br><span class="line">route add -host 172.16.10.250 dev eno16777736:0</span><br><span class="line"></span><br><span class="line">ipvsadm -A -t 172.16.10.250:80 -s wrr</span><br><span class="line">ipvsadm -a -t 172.16.10.250:80 -r 10.23.23.20:80 -g -w 1</span><br><span class="line">ipvsadm -a -t 172.16.10.250:80 -r 10.23.23.30:80 -g -w 1</span><br></pre></td></tr></table></figure>
+
 <p>RS配置</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ifconfig lo:0 172.16.10.250 broadcast 172.16.10.250 netmask 255.255.255.255 up</span><br><span class="line"></span><br><span class="line">route add default gw 10.23.23.2</span><br><span class="line"></span><br><span class="line">echo "1" &gt; /proc/sys/net/ipv4/conf/lo/arp_ignore</span><br><span class="line">echo "2" &gt; /proc/sys/net/ipv4/conf/lo/arp_announce</span><br><span class="line">echo "1" &gt; /proc/sys/net/ipv4/conf/all/arp_ignore</span><br><span class="line">echo "2" &gt; /proc/sys/net/ipv4/conf/all/arp_announce</span><br></pre></td></tr></table></figure>
+
 <p><img src="../images/1546498984176.png" alt="1546498984176"></p>
 <p><img src="../images/1546499023346.png" alt="1546499023346"></p>
 <h2 id="IP-TUN"><a href="#IP-TUN" class="headerlink" title="IP-TUN"></a>IP-TUN</h2><p>原理</p>
@@ -308,7 +309,7 @@
 </article>
 
     <!-- Footer -->
-    <hr>
+    <hr />
 
 <!-- Footer -->
 <footer>
