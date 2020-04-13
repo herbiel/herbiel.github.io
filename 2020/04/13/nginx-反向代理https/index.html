@@ -13,6 +13,10 @@
     
 
     
+        <meta name="description" content="基于centos7 配置nginx https反向代理百度(可以根据需要改成公司内部业务系统url)
+配置文件
+1234567891011121314151617server&amp;#123;listen       443 ssl;server_name www.qcloudv.com;access_l">
+    
 
     <!--Author-->
     
@@ -21,10 +25,14 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="categories">
+        <meta property="og:title" content="nginx-反向代理https">
     
 
     <!--Open Graph Description-->
+    
+        <meta property="og:description" content="基于centos7 配置nginx https反向代理百度(可以根据需要改成公司内部业务系统url)
+配置文件
+1234567891011121314151617server&amp;#123;listen       443 ssl;server_name www.qcloudv.com;access_l">
     
 
     <!--Open Graph Site Name-->
@@ -51,7 +59,7 @@
 
     <!-- Title -->
     
-    <title>categories - Devops</title>
+    <title>nginx-反向代理https - Devops</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -153,35 +161,81 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-
-    <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>categories</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                
-                <div class="archive-before-pagination"></div>
+                <div class="post-heading">
+                    <h1>nginx-反向代理https</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2020-04-13
+                        
+                    </span>
+                </div>
             </div>
         </div>
     </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
 
 
+<a href="/tags/Web架构/">#Web架构</a> <a href="/tags/Nginx/">#Nginx</a>
 
 
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
 
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>基于centos7 配置nginx https反向代理百度(可以根据需要改成公司内部业务系统url)</p>
+<p>配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">listen       443 ssl;</span><br><span class="line">server_name www.qcloudv.com;</span><br><span class="line">access_log /var/log/nginx/proxy.qcloudv.access.log;</span><br><span class="line">error_log /var/log/nginx/proxy.qcloudv.error.log;</span><br><span class="line">ssl_certificate /etc/nginx/ssl/qcloudv.crt;</span><br><span class="line">ssl_certificate_key /etc/nginx/ssl/qcloudv.key;</span><br><span class="line">location / &#123;</span><br><span class="line">proxy_pass https://www.baidu.com/;</span><br><span class="line">proxy_redirect off;</span><br><span class="line">proxy_set_header   Host    www.baidu.com;</span><br><span class="line">proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">proxy_set_header Host $host;</span><br><span class="line">proxy_set_header X-Forwarded-proto https;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -t</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
+
+<p>访问<a href="https://www.qcloudv.xyz" target="_blank" rel="noopener">https://www.qcloudv.xyz</a> 就会是访问百度的效果。</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
 
     <!-- Footer -->
     <hr />
