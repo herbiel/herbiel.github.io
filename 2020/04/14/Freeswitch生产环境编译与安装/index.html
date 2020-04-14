@@ -13,15 +13,9 @@
     
 
     
-        <meta name="description" content="Docker基本操作应用
-镜像
-docker pull centos:7   #获取centos7镜像
-
-docker images        #查看本地镜像
-
-docker rmi centos:7  # 删除本地镜像，可以-f 强制删除
-
-docker search centos   # 搜">
+        <meta name="description" content="Freeswitch安装环境:debian 9
+安装依赖
+123456789wget -O - https://files.freeswitch.org/repo/deb/freeswitch-1.8/fsstretch-archive-keyring.asc | apt-key add -echo">
     
 
     <!--Author-->
@@ -31,20 +25,14 @@ docker search centos   # 搜">
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Docker-常用命令">
+        <meta property="og:title" content="Freeswitch生产环境编译与安装">
     
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="Docker基本操作应用
-镜像
-docker pull centos:7   #获取centos7镜像
-
-docker images        #查看本地镜像
-
-docker rmi centos:7  # 删除本地镜像，可以-f 强制删除
-
-docker search centos   # 搜">
+        <meta property="og:description" content="Freeswitch安装环境:debian 9
+安装依赖
+123456789wget -O - https://files.freeswitch.org/repo/deb/freeswitch-1.8/fsstretch-archive-keyring.asc | apt-key add -echo">
     
 
     <!--Open Graph Site Name-->
@@ -71,7 +59,7 @@ docker search centos   # 搜">
 
     <!-- Title -->
     
-    <title>Docker-常用命令 - Devops</title>
+    <title>Freeswitch生产环境编译与安装 - Devops</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -181,13 +169,13 @@ docker search centos   # 搜">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>Docker-常用命令</h1>
+                    <h1>Freeswitch生产环境编译与安装</h1>
                     
                     <span class="meta">
                         <!-- Date and Author -->
                         
                         
-                            2018-10-17
+                            2020-04-14
                         
                     </span>
                 </div>
@@ -203,44 +191,25 @@ docker search centos   # 搜">
 
             <!-- Tags and categories -->
            
-                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
-                    
-                        
-
-
-<a href="/tags/Linux/">#Linux</a> <a href="/tags/Docker/">#Docker</a> <a href="/tags/vitural/">#vitural</a>
-
-
-                    
-                </div>
-                <div class="col-lg-4 col-md-5 post-categories">
-                    
-                </div>
-            
 
             <!-- Gallery -->
             
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>Docker基本操作应用</p>
-<p>镜像</p>
-<pre><code>docker pull centos:7   #获取centos7镜像
+                <h2 id="Freeswitch安装"><a href="#Freeswitch安装" class="headerlink" title="Freeswitch安装"></a>Freeswitch安装</h2><p>环境:debian 9</p>
+<p>安装依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">wget -O - https://files.freeswitch.org/repo/deb/freeswitch-1.8/fsstretch-archive-keyring.asc | apt-key add -</span><br><span class="line"></span><br><span class="line">echo &quot;deb http://files.freeswitch.org/repo/deb/freeswitch-1.8/ jessie main&quot; &gt; /etc/apt/sources.list.d/freeswitch.list</span><br><span class="line">echo &quot;deb-src http://files.freeswitch.org/repo/deb/freeswitch-1.8/ jessie main&quot; &gt;&gt; /etc/apt/sources.list.d/freeswitch.list</span><br><span class="line"></span><br><span class="line">apt-get update</span><br><span class="line"></span><br><span class="line"># Install dependencies required for the build</span><br><span class="line">apt-get build-dep freeswitch</span><br></pre></td></tr></table></figure>
 
-docker images        #查看本地镜像
+<p>下载freeswitch并编译安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/src/</span><br><span class="line">git clone https://github.com/signalwire/freeswitch.git -bv1.8 freeswitch</span><br><span class="line">cd freeswitch</span><br><span class="line"></span><br><span class="line"># Because we&apos;re in a branch that will go through many rebases, it&apos;s</span><br><span class="line"># better to set this one, or you&apos;ll get CONFLICTS when pulling (update).</span><br><span class="line">git config pull.rebase true</span><br><span class="line"></span><br><span class="line"># ... and do the build</span><br><span class="line">./bootstrap.sh -j</span><br><span class="line">不启用postgresql</span><br><span class="line"></span><br><span class="line">./configure --enable-core-odbc-support  --enable-system-lua --without-pgsql --prefix=/usr/local/freeswitch --sysconfdir=/etc --localstatedir=/var --datadir=/usr/share</span><br><span class="line"></span><br><span class="line">启用postgresql</span><br><span class="line"></span><br><span class="line">./configure --enable-core-odbc-support  --enable-system-lua  --enable-core-pgsql-support --prefix=/usr/local/freeswitch --sysconfdir=/etc --localstatedir=/var --datadir=/usr/share</span><br><span class="line"></span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"># Install audio files:</span><br><span class="line">make cd-sounds-install cd-moh-install</span><br></pre></td></tr></table></figure>
 
-docker rmi centos:7  # 删除本地镜像，可以-f 强制删除
+<p>初始化配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">adduser freeswitch --disabled-password --quiet --system --home /usr/local/freeswitch</span><br><span class="line"># To update an installed build:</span><br><span class="line">cd /usr/src/freeswitch</span><br><span class="line">make current</span><br><span class="line"># Create link for freeswitch</span><br><span class="line">wget https://raw.githubusercontent.com/herbiel/pubilc-shell/master/freeswitch.service -P /lib/systemd/system/ </span><br><span class="line"></span><br><span class="line">ln -s /usr/local/freeswitch/bin/freeswitch /usr/local/bin/freeswitch</span><br><span class="line">ln -s /usr/local/freeswitch/bin/fs_cli /usr/local/bin/fs_cli</span><br><span class="line"># set chmod for freeswitch and start quick script</span><br><span class="line">chown -R freeswitch:daemon /usr/local/freeswitch</span><br></pre></td></tr></table></figure>
 
-docker search centos   # 搜索centos镜像
+<p>手动安装依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apt-get install --yes build-essential pkg-config uuid-dev \</span><br><span class="line">zlib1g-dev libjpeg-dev libsqlite3-dev libcurl4-openssl-dev \</span><br><span class="line">libpcre3-dev libspeexdsp-dev libldns-dev libedit-dev libtiff5-dev \</span><br><span class="line">yasm libopus-dev libsndfile1-dev unzip libtool-bin</span><br></pre></td></tr></table></figure>
 
-docker built -t centos:7 .  #dockerfile打包镜像 . 代表当前dockerfile目录
-
-docker commit centos7 centos:7.1   #commit打包镜像</code></pre><p>容器</p>
-<p>创建容器</p>
-<pre><code>docker run -itd --name centos7 centos:7</code></pre><p>-p 80:80</p>
-<p>-v /home/test:/home/test</p>
-<p>进入容器</p>
-<p>仓库</p>
 
 
                 
