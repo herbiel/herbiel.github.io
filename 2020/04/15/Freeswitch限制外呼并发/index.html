@@ -13,15 +13,9 @@
     
 
     
-        <meta name="description" content="Docker基本操作应用
-镜像
-docker pull centos:7   #获取centos7镜像
-
-docker images        #查看本地镜像
-
-docker rmi centos:7  # 删除本地镜像，可以-f 强制删除
-
-docker search centos   # 搜">
+        <meta name="description" content="Limit 限制呼叫https://freeswitch.org/confluence/display/FREESWITCH/mod_dptools%3A+Limit
+限制网关当前呼叫量
+123456&amp;lt;extension name=&#34;outbound&#34;&amp;gt;  &amp;lt;condition f">
     
 
     <!--Author-->
@@ -31,20 +25,14 @@ docker search centos   # 搜">
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Docker-常用命令">
+        <meta property="og:title" content="Freeswitch限制外呼并发">
     
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="Docker基本操作应用
-镜像
-docker pull centos:7   #获取centos7镜像
-
-docker images        #查看本地镜像
-
-docker rmi centos:7  # 删除本地镜像，可以-f 强制删除
-
-docker search centos   # 搜">
+        <meta property="og:description" content="Limit 限制呼叫https://freeswitch.org/confluence/display/FREESWITCH/mod_dptools%3A+Limit
+限制网关当前呼叫量
+123456&amp;lt;extension name=&#34;outbound&#34;&amp;gt;  &amp;lt;condition f">
     
 
     <!--Open Graph Site Name-->
@@ -71,7 +59,7 @@ docker search centos   # 搜">
 
     <!-- Title -->
     
-    <title>Docker-常用命令 - Devops</title>
+    <title>Freeswitch限制外呼并发 - Devops</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -181,13 +169,13 @@ docker search centos   # 搜">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>Docker-常用命令</h1>
+                    <h1>Freeswitch限制外呼并发</h1>
                     
                     <span class="meta">
                         <!-- Date and Author -->
                         
                         
-                            2018-10-17
+                            2020-04-15
                         
                     </span>
                 </div>
@@ -208,7 +196,7 @@ docker search centos   # 搜">
                         
 
 
-<a href="/tags/Docker/">#Docker</a> <a href="/tags/vitural/">#vitural</a> <a href="/tags/Linux/">#Linux</a>
+<a href="/tags/Freeswitch/">#Freeswitch</a> <a href="/tags/VOIP/">#VOIP</a>
 
 
                     
@@ -223,24 +211,17 @@ docker search centos   # 搜">
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>Docker基本操作应用</p>
-<p>镜像</p>
-<pre><code>docker pull centos:7   #获取centos7镜像
+                <h2 id="Limit-限制呼叫"><a href="#Limit-限制呼叫" class="headerlink" title="Limit 限制呼叫"></a>Limit 限制呼叫</h2><p><a href="https://freeswitch.org/confluence/display/FREESWITCH/mod_dptools%3A+Limit" target="_blank" rel="noopener">https://freeswitch.org/confluence/display/FREESWITCH/mod_dptools%3A+Limit</a></p>
+<p>限制网关当前呼叫量</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">extension</span> <span class="attr">name</span>=<span class="string">"outbound"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">condition</span> <span class="attr">field</span>=<span class="string">"destination_number"</span> <span class="attr">expression</span>=<span class="string">"^0(\d+)$"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">action</span> <span class="attr">application</span>=<span class="string">"limit_execute"</span> <span class="attr">data</span>=<span class="string">"hash outbound carrier1 5 bridge sofia/gateway/carrier1/$&#123;destination_number&#125;"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">action</span> <span class="attr">application</span>=<span class="string">"limit_execute"</span> <span class="attr">data</span>=<span class="string">"hash outbound carrier2 5 bridge sofia/gateway/carrier2/$&#123;destination_number&#125;"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">condition</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">extension</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-docker images        #查看本地镜像
+<p>限制user 当前呼叫</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">extension</span> <span class="attr">name</span>=<span class="string">"limit_exceeded"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">condition</span> <span class="attr">field</span>=<span class="string">"destination_number"</span> <span class="attr">expression</span>=<span class="string">"^limit_exceeded$"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">action</span> <span class="attr">application</span>=<span class="string">"playback"</span> <span class="attr">data</span>=<span class="string">"/sounds/overthelimit.wav"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">action</span> <span class="attr">application</span>=<span class="string">"hangup"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">condition</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">extension</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">extension</span> <span class="attr">name</span>=<span class="string">"limit"</span> <span class="attr">continue</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">condition</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- You can set $&#123;max_calls&#125; per user in directory.conf and remove the line below --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">action</span> <span class="attr">application</span>=<span class="string">"set"</span> <span class="attr">data</span>=<span class="string">"max_calls=1"</span> <span class="attr">inline</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">action</span> <span class="attr">application</span>=<span class="string">"limit"</span> <span class="attr">data</span>=<span class="string">"db $$&#123;domain&#125; $&#123;sip_auth_username&#125; $&#123;max_calls&#125;"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">condition</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">extension</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-docker rmi centos:7  # 删除本地镜像，可以-f 强制删除
+<p>fusionpbx可以直接设置</p>
+<p><img src="C:%5CUsers%5CE480%5COneDrive%5CFreeswitch%E7%BB%8F%E5%85%B8%E6%95%99%E7%A8%8B%5Cimage-20200116160849206.png" alt="image-20200116160849206"></p>
+<img src="C:\Users\E480\OneDrive\Freeswitch经典教程\image-20200116160801014.png" alt="image-20200116160801014">
 
-docker search centos   # 搜索centos镜像
-
-docker built -t centos:7 .  #dockerfile打包镜像 . 代表当前dockerfile目录
-
-docker commit centos7 centos:7.1   #commit打包镜像</code></pre><p>容器</p>
-<p>创建容器</p>
-<pre><code>docker run -itd --name centos7 centos:7</code></pre><p>-p 80:80</p>
-<p>-v /home/test:/home/test</p>
-<p>进入容器</p>
-<p>仓库</p>
 
 
                 
