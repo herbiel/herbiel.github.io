@@ -13,19 +13,22 @@
     
 
     
-        <meta name="description" content="Docker挂载存储所属主组权限问题
-挂载目录的权限是www
+        <meta name="description" content="三汇无线语音网关与freeswitch互打环境:语音网关三汇smg4032
+freeswitch1.8
+坐席软电话:
+microsip
+拓扑图
 
 
-dockerfile创建www用户
+配置三汇语音网关添加端口组
+
+端口静态绑定
+
+路由配置
 
 
-docker-compose 或者docker run挂载之后权限不一样,变成了100x的主和组权限,写入提示没有权限
-
-
-
-解决方法
-需要在宿主主机上面查看www用户的uid和gid，在doc">
+配置freeswitch注册三汇语音网关
+12345678&amp;lt;include&amp;gt;  ">
     
 
     <!--Author-->
@@ -35,24 +38,27 @@ docker-compose 或者docker run挂载之后权限不一样,变成了100x的主�
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Docker挂载存储所属主组权限问题">
+        <meta property="og:title" content="Freeswitch对接三汇网关">
     
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="Docker挂载存储所属主组权限问题
-挂载目录的权限是www
+        <meta property="og:description" content="三汇无线语音网关与freeswitch互打环境:语音网关三汇smg4032
+freeswitch1.8
+坐席软电话:
+microsip
+拓扑图
 
 
-dockerfile创建www用户
+配置三汇语音网关添加端口组
+
+端口静态绑定
+
+路由配置
 
 
-docker-compose 或者docker run挂载之后权限不一样,变成了100x的主和组权限,写入提示没有权限
-
-
-
-解决方法
-需要在宿主主机上面查看www用户的uid和gid，在doc">
+配置freeswitch注册三汇语音网关
+12345678&amp;lt;include&amp;gt;  ">
     
 
     <!--Open Graph Site Name-->
@@ -79,7 +85,7 @@ docker-compose 或者docker run挂载之后权限不一样,变成了100x的主�
 
     <!-- Title -->
     
-    <title>Docker挂载存储所属主组权限问题 - Devops</title>
+    <title>Freeswitch对接三汇网关 - Devops</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -189,13 +195,13 @@ docker-compose 或者docker run挂载之后权限不一样,变成了100x的主�
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>Docker挂载存储所属主组权限问题</h1>
+                    <h1>Freeswitch对接三汇网关</h1>
                     
                     <span class="meta">
                         <!-- Date and Author -->
                         
                         
-                            2019-03-17
+                            2020-04-15
                         
                     </span>
                 </div>
@@ -216,7 +222,7 @@ docker-compose 或者docker run挂载之后权限不一样,变成了100x的主�
                         
 
 
-<a href="/tags/Devops/">#Devops</a> <a href="/tags/Docker/">#Docker</a> <a href="/tags/虚拟化/">#虚拟化</a>
+<a href="/tags/VOIP/">#VOIP</a> <a href="/tags/Freeswitch/">#Freeswitch</a>
 
 
                     
@@ -231,19 +237,35 @@ docker-compose 或者docker run挂载之后权限不一样,变成了100x的主�
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <h2 id="Docker挂载存储所属主组权限问题"><a href="#Docker挂载存储所属主组权限问题" class="headerlink" title="Docker挂载存储所属主组权限问题"></a>Docker挂载存储所属主组权限问题</h2><ol>
-<li><p>挂载目录的权限是www</p>
-<p><img src="../images/1552824923023.png" alt="1552824923023"></p>
+                <h2 id="三汇无线语音网关与freeswitch互打"><a href="#三汇无线语音网关与freeswitch互打" class="headerlink" title="三汇无线语音网关与freeswitch互打"></a>三汇无线语音网关与freeswitch互打</h2><p>环境:语音网关三汇smg4032</p>
+<p>freeswitch1.8</p>
+<p>坐席软电话:</p>
+<p>microsip</p>
+<p>拓扑图</p>
+<p><img src="C:%5CUsers%5CE480%5COneDrive%5CFreeswitch%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%5Cimage-20191211111519510.png" alt="image-20191211111519510"></p>
+<ol>
+<li><h4 id="配置三汇语音网关"><a href="#配置三汇语音网关" class="headerlink" title="配置三汇语音网关"></a>配置三汇语音网关</h4><p>添加端口组</p>
+<p><img src="C:%5CUsers%5CE480%5COneDrive%5CFreeswitch%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%5Cimage-20191211111947946.png" alt="image-20191211111947946"></p>
+<p>端口静态绑定</p>
+<p><img src="C:%5CUsers%5CE480%5COneDrive%5CFreeswitch%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%5Cimage-20191211111609148.png" alt="image-20191211111609148"></p>
+<p>路由配置</p>
+<p><img src="C:%5CUsers%5CE480%5COneDrive%5CFreeswitch%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%5Cimage-20191211111712730.png" alt="image-20191211111712730"></p>
 </li>
-<li><p>dockerfile创建www用户</p>
-<p><img src="../images/1552825000498.png" alt="1552825000498"></p>
-</li>
-<li><p>docker-compose 或者docker run挂载之后权限不一样,变成了100x的主和组权限,写入提示没有权限</p>
+<li><h4 id="配置freeswitch"><a href="#配置freeswitch" class="headerlink" title="配置freeswitch"></a>配置freeswitch</h4><p>注册三汇语音网关</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;include&gt;</span><br><span class="line">  &lt;gateway name=&quot;smg4032&quot;&gt;</span><br><span class="line">  &lt;param name=&quot;realm&quot; value=&quot;192.168.50.199&quot;/&gt;</span><br><span class="line">  &lt;param name=&quot;expire-seconds&quot; value=&quot;3600&quot;/&gt;</span><br><span class="line">  &lt;param name=&quot;register&quot; value=&quot;false&quot;/&gt;</span><br><span class="line">  &lt;param name=&quot;retry-seconds&quot; value=&quot;30&quot;/&gt;</span><br><span class="line">  &lt;/gateway&gt;</span><br><span class="line">&lt;/include&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Inbound路由配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;extension name=&quot;6666666&quot; continue=&quot;false&quot; uuid=&quot;5b0c7c95-9aff-4824-96c7-b131d1e700de&quot;&gt;</span><br><span class="line">	&lt;condition field=&quot;destination_number&quot; expression=&quot;^(6666666)$&quot;&gt;</span><br><span class="line">		&lt;action application=&quot;export&quot; data=&quot;call_direction=inbound&quot; inline=&quot;true&quot;/&gt;</span><br><span class="line">		&lt;action application=&quot;set&quot; data=&quot;domain_uuid=7c612313-2f19-452e-9cf5-ce7871c588ea&quot; inline=&quot;true&quot;/&gt;</span><br><span class="line">		&lt;action application=&quot;set&quot; data=&quot;domain_name=192.168.50.188&quot; inline=&quot;true&quot;/&gt;</span><br><span class="line">		&lt;action application=&quot;set&quot; data=&quot;hangup_after_bridge=true&quot;/&gt;</span><br><span class="line">		&lt;action application=&quot;set&quot; data=&quot;continue_on_fail=true&quot;/&gt;</span><br><span class="line">		&lt;action application=&quot;transfer&quot; data=&quot;1001 XML 192.168.50.188&quot;/&gt;</span><br><span class="line">	&lt;/condition&gt;</span><br><span class="line">&lt;/extension&gt;</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
-<ol start="4">
-<li><p>解决方法</p>
-<p>需要在宿主主机上面查看www用户的uid和gid，在dockerfile里面创建用户的时候指定uid和gid</p>
+<ol start="3">
+<li><h4 id="配置坐席电话"><a href="#配置坐席电话" class="headerlink" title="配置坐席电话"></a>配置坐席电话</h4><p>注册到Freeswitch(无nat情况)</p>
+<p><img src="C:%5CUsers%5CE480%5COneDrive%5CFreeswitch%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%5Cimage-20191211145127711.png" alt="image-20191211145127711"></p>
+<p>注册到Freeswitch(nat情况)</p>
+<p><img src="C:%5CUsers%5CE480%5COneDrive%5CFreeswitch%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%5Cimage-20191211145024413.png" alt="image-20191211145024413"></p>
 </li>
 </ol>
 
