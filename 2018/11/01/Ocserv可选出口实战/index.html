@@ -202,7 +202,7 @@ yum install ocser">
                         
 
 
-<a href="/tags/Linux/">#Linux</a> <a href="/tags/NETWORK/">#NETWORK</a>
+<a href="/tags/NETWORK/">#NETWORK</a>
 
 
                     
@@ -227,7 +227,8 @@ yum install ocser">
 
 <p>config-per-group文件下面放这几个组配置的文件 </p>
 <p>HK  Indonesia   Singapore </p>
-<pre><code>cat HK  </code></pre><p>ipv4-network = 10.23.20.0/24     </p>
+<pre><code>cat HK  </code></pre><p>​    </p>
+<p>ipv4-network = 10.23.20.0/24     </p>
 <p>添加用户的时候加分组  </p>
 <pre><code>ocpasswd -c /etc/ocserv/ocpasswd -g &quot;HK,Indonesia&quot; test </code></pre><p>3.建立ip-tunnel </p>
 <pre><code>ip tunnel add Indonesia-tun mode ipip remote 103.200.2.100 local 45.199.10.100     
@@ -235,7 +236,8 @@ ifconfig Indonesia-tun 10.23.1.1 netmask 255.255.255.0
 
 ip tunnel add singapore-tun mode ipip remote 195.222.22.100 local 45.199.10.10    
 
-ifconfig singapore-tun 10.23.2.1 netmask 255.255.255.0      </code></pre><p>4.配置策略路由 </p>
+ifconfig singapore-tun 10.23.2.1 netmask 255.255.255.0      </code></pre><p>​    </p>
+<p>4.配置策略路由 </p>
 <pre><code>ip route add default via 10.23.1.2 table 100 
 
 ip rule add from 10.23.20.0/24 table 100 
@@ -253,9 +255,11 @@ echo &quot;0&quot; &gt; /proc/sys/net/ipv4/conf/indonesia-tun/rp_filter
 
 echo 0 &gt; /proc/sys/net/ipv4/conf/eth0/rp_filter     
 
-echo &quot;0&quot; &gt; /proc/sys/net/ipv4/conf/singapore-tun/rp_filter </code></pre><p>7.在海外服务器上配置(以Indonesia服务器为例子) </p>
+echo &quot;0&quot; &gt; /proc/sys/net/ipv4/conf/singapore-tun/rp_filter </code></pre><p>​    </p>
+<p>7.在海外服务器上配置(以Indonesia服务器为例子) </p>
 <p>建立tunnel </p>
-<pre><code>ip tunnel add Indonesia-tun mode ipip remote 45.199.10.100 local 103.200.2.100 ifconfig Indonesia-tun 10.23.1.2 netmask 255.255.255.0</code></pre><p>写路由 </p>
+<pre><code>ip tunnel add Indonesia-tun mode ipip remote 45.199.10.100 local 103.200.2.100 ifconfig Indonesia-tun 10.23.1.2 netmask 255.255.255.0</code></pre><p>​               </p>
+<p>写路由 </p>
 <pre><code>ip route add 10.23.20.0/24 via 10.23.1.2</code></pre><p>Nat配置 </p>
 <pre><code>iptables -t nat -A POSTROUTING -s 10.23.20.0/24 ! -d 10.23.0.0/16 -j SNAT --to-source 103.200.2.100 </code></pre><p>iptables-save </p>
 <p>开启转发 </p>

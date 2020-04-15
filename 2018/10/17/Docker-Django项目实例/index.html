@@ -204,7 +204,7 @@ docker create volume mysql_volume
                         
 
 
-<a href="/tags/vitural/">#vitural</a> <a href="/tags/Docker/">#Docker</a> <a href="/tags/Linux/">#Linux</a>
+<a href="/tags/Docker/">#Docker</a>
 
 
                     
@@ -244,13 +244,15 @@ docker create volume mysql_volume
 <p>建立nginx镜像</p>
 <pre><code>docker build -t nginx:v1 .</code></pre><p>4.数据库mysql5.6     </p>
 <p>使用官方镜像，但是要使用永久数据存储，初始化一些变量root密码等     </p>
-<pre><code>docker run -itd  --name mysql -vmysql-volume:/var/lib/mysql -p3306:3306 -e MYSQL_ROOT_PASSWORD=test123 mysql --character-set-server=utf8     </code></pre><p>创建数据库 </p>
+<pre><code>docker run -itd  --name mysql -vmysql-volume:/var/lib/mysql -p3306:3306 -e MYSQL_ROOT_PASSWORD=test123 mysql --character-set-server=utf8     </code></pre><p>​    </p>
+<p>创建数据库 </p>
 <pre><code>docker exec myslq -c sh &quot;create database crazyeye&quot; </code></pre><p>5.运行容器 </p>
 <pre><code>docker run -itd --name mysql --mount src=mysql_volume,dst=/var/lib/mysql --network django -p3306:3306 mysql:5.6      
 
   docker run -itd --name django --network django django:v1     
 
-  docker run -itd --name nginx --network django -p8000:8000 nginx:v1     </code></pre><p>访问nginx的8000网站测试</p>
+  docker run -itd --name nginx --network django -p8000:8000 nginx:v1     </code></pre><p>​     </p>
+<p>访问nginx的8000网站测试</p>
 
 
                 

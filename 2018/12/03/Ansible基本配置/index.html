@@ -246,13 +246,17 @@ ansible是新出现的自动化运维工具，基于Python开发，集合了众�
 <ol>
 <li><p>安装</p>
 <p>使用yum 安装</p>
-<p>yum install epel-release -y</p>
-<p>yum install <strong>ansible</strong> –y</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release -y</span><br><span class="line"></span><br><span class="line">yum install **ansible** –y</span><br></pre></td></tr></table></figure>
+
 <p>使用pip （python 的包管理模块）安装</p>
 <p>pip install ansible   如果没pip,需先安装pip.yum可直接安装：</p>
-<p>yum install python-pip</p>
-<p>pip install ansible</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install python-pip</span><br><span class="line"></span><br><span class="line">pip install ansible</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
+</ol>
+<ol start="2">
 <li><p>配置文件配置</p>
 <p>sudo_user：</p>
 <p>这是设置默认执行命令的用户，也可以在playbook中重新设置这个参数。配置实例如下：</p>
