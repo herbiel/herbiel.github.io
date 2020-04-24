@@ -17,11 +17,10 @@
 下载windows winpe和AIK工具下载地址
 
 
-   []: https://go.microsoft.com/fwlink/?linkid=2022233    “windows winpe”
    AIK安装只选部署工具就好
    
 
-创建">
+创建windows自动应答文件[]: https://www.windowsafg.com/win10x86_x64.html    “在线创建wind">
     
 
     <!--Author-->
@@ -40,11 +39,10 @@
 下载windows winpe和AIK工具下载地址
 
 
-   []: https://go.microsoft.com/fwlink/?linkid=2022233    “windows winpe”
    AIK安装只选部署工具就好
    
 
-创建">
+创建windows自动应答文件[]: https://www.windowsafg.com/win10x86_x64.html    “在线创建wind">
     
 
     <!--Open Graph Site Name-->
@@ -213,7 +211,6 @@
 <li><h4 id="下载windows-winpe和AIK工具"><a href="#下载windows-winpe和AIK工具" class="headerlink" title="下载windows winpe和AIK工具"></a>下载windows winpe和AIK工具</h4><p>下载地址</p>
 </li>
 </ol>
-<p>   []: <a href="https://go.microsoft.com/fwlink/?linkid=2022233" target="_blank" rel="noopener">https://go.microsoft.com/fwlink/?linkid=2022233</a>    “windows winpe”</p>
 <p>   AIK安装只选部署工具就好</p>
 <p>   <img src="../../../Linux%E4%BD%93%E7%B3%BB%E7%AC%94%E8%AE%B0/image/image-20200424172537453.png" alt="image-20200424172537453"></p>
 <ol start="2">
@@ -221,7 +218,7 @@
 <p>也可以使用windows镜像部署工具自己创建</p>
 </li>
 <li><p>创建winpe镜像</p>
-<p><img src="../../../Linux%E4%BD%93%E7%B3%BB%E7%AC%94%E8%AE%B0/image/image-20200424173206214.png" alt="image-20200424173206214"></p>
+<p><img src="https://raw.githubusercontent.com/herbiel/picgo/master/image-20200424173206214.png" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">copype amd64 E:\winpe</span><br><span class="line"></span><br><span class="line">Dism /mount-image /imagefile:E:\winpe\media\sources\boot.wim /index:1 /mountdir:E:\winpe\mount</span><br><span class="line"></span><br><span class="line">echo net use z: \\10.10.1.20\share &gt;&gt; E:\winpe\mount\Windows\System32\startnet.cmd</span><br><span class="line">echo z:\win\setup.exe /unattend:z:\win\win10.xml &gt;&gt; E:\winpe\mount\Windows\System32\startnet.cmd</span><br><span class="line"></span><br><span class="line">Dism /unmount-image /mountdir:E:\winpe\mount /commit</span><br><span class="line">MakeWinPEMedia /ISO E:\winpe E:\winpe\winpe10.iso</span><br></pre></td></tr></table></figure>
 
 <p>10.10.1.20是smb服务器，也就是cobbler服务器</p>
