@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="Cobbler安装部署Centos环境下
+架构
+
+
+系统初始化配置关闭selinux
+setenforce 0
+1sed -i &amp;apos;s#SELINUX=enforcing#SELINUX=permissive#g&amp;apos; /etc/sysconfig/selinux
+
+关闭防火墙
+123">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="herbiel">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Cobbler自动部署os-centos">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Cobbler安装部署Centos环境下
+架构
+
+
+系统初始化配置关闭selinux
+setenforce 0
+1sed -i &amp;apos;s#SELINUX=enforcing#SELINUX=permissive#g&amp;apos; /etc/sysconfig/selinux
+
+关闭防火墙
+123">
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Devops">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="herbiel.github.iohttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg">
+    
+
+        <meta name="twitter:card" content="summary_large_image">
+
+    
+
+    
+        <meta name="twitter:image" content="herbiel.github.iohttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg">
+    
+
+    <!-- Title -->
+    
+    <title>Cobbler自动部署os-centos - Devops</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">站在巨人的肩膀上</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Cobbler自动部署os-centos</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2020-04-21
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Linux/">#Linux</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h2 id="Cobbler安装部署"><a href="#Cobbler安装部署" class="headerlink" title="Cobbler安装部署"></a>Cobbler安装部署</h2><p>Centos环境下</p>
+<p>架构</p>
+<p><img src="/images/image-20200420234813068.png" alt="image-20200421225026881"></p>
+<ol>
+<li><h4 id="系统初始化配置"><a href="#系统初始化配置" class="headerlink" title="系统初始化配置"></a>系统初始化配置</h4><p>关闭selinux</p>
+<p>setenforce 0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &apos;s#SELINUX=enforcing#SELINUX=permissive#g&apos; /etc/sysconfig/selinux</span><br></pre></td></tr></table></figure>
+
+<p>关闭防火墙</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld</span><br><span class="line"></span><br><span class="line">systemctl disable firewalld</span><br></pre></td></tr></table></figure>
+
+<p>安装阿里云epel源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo</span><br></pre></td></tr></table></figure>
+
+<p>更新软件包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum update -y</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="部署cobbler"><a href="#部署cobbler" class="headerlink" title="部署cobbler"></a>部署cobbler</h4><p>安装cobbler和其组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y httpd dhcp tftp cobbler cobbler-web pykickstart xinetd</span><br></pre></td></tr></table></figure>
+
+<p>启动服务和开机自启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">systemctl start httpd</span><br><span class="line">systemctl start cobblerd</span><br><span class="line">systemctl start xinetd</span><br><span class="line">systemctl enable httpd</span><br><span class="line">systemctl enable cobblerd</span><br><span class="line">systemctl enable xinetd</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="配置cobbler"><a href="#配置cobbler" class="headerlink" title="配置cobbler"></a>配置cobbler</h4><ul>
+<li>检查配置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cobbler check</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">The following are potential configuration items that you may want to fix:</span><br><span class="line"> </span><br><span class="line">1 : The &apos;server&apos; field in /etc/cobbler/settings must be set to something other than localhost, or kickstarting features will not work. </span><br><span class="line">This should be a resolvable hostname or IP for the boot server as reachable by all machines that will use it.</span><br><span class="line">2 : For PXE to be functional, the &apos;next_server&apos; field in /etc/cobbler/settings must be set to something other than 127.0.0.1,</span><br><span class="line">and should match the IP of the boot server on the PXE network.</span><br><span class="line">3 : change &apos;disable&apos; to &apos;no&apos; in /etc/xinetd.d/tftp</span><br><span class="line">4 : some network boot-loaders are missing from /var/lib/cobbler/loaders, you may run &apos;cobbler get-loaders&apos; to download them, or,</span><br><span class="line">if you only want to handle x86/x86_64 netbooting, you may ensure that you have installed a *recent* version of the syslinux package installed and can ignore this message entirely.</span><br><span class="line">Files in this directory, should you want to support all architectures, should include pxelinux.0, menu.c32, elilo.efi,</span><br><span class="line">and yaboot. The &apos;cobbler get-loaders&apos; command is the easiest way to resolve these requirements.</span><br><span class="line">5 : enable and start rsyncd.service with systemctl</span><br><span class="line">6 : debmirror package is not installed, it will be required to manage debian deployments and repositories</span><br><span class="line">7 : The default password used by the sample templates for newly installed machines (default_password_crypted in /etc/cobbler/settings) is still set to &apos;cobbler&apos; and should be changed,</span><br><span class="line">try: &quot;openssl passwd -1 -salt &apos;random-phrase-here&apos; &apos;your-password-here&apos;&quot; to generate new one</span><br><span class="line">8 : fencing tools were not found, and are required to use the (optional) power management features.</span><br><span class="line">install cman or fence-agents to use them</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>生成默认密码（用于登录后面我们创建的linux虚拟机,root密码）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl passwd -1 -salt &apos;123456&apos; &apos;test1234&apos;</span><br></pre></td></tr></table></figure>
+
+<p>test1234才是root密码</p>
+<p><img src="/images/image-20200421223748041.png" alt="image-20200421223748041"></p>
+</li>
+<li><p>修改配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/cobbler/settings</span><br></pre></td></tr></table></figure>
+
+<p>主要修改下面几个参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server: 192.168.50.100</span><br><span class="line">next_server: 192.168.50.100</span><br><span class="line">default_password_crypted: &quot;$1$123456$Q/WGzwlidu0V8tip7w3hP1&quot;</span><br><span class="line">#设置cobbler来管理dhcp</span><br><span class="line">manage_dhcp: 1</span><br><span class="line">#设置cobbler来管理tftp</span><br><span class="line">manage_tftpd: 1</span><br><span class="line">#设置cobbler支持yum源安装</span><br><span class="line">yum_post_install_mirror: 1</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>修改tftp配置</p>
+<p><img src="/images/image-20200421223949861.png" alt="image-20200421223949861"></p>
+</li>
+<li><p>加载cobbler一下文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cobbler get-loaders</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置rsync服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable rsync</span><br><span class="line">systemctl start rsync</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>应用配置并重新检查</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart cobblerd</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cobbler check</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">The following are potential configuration items that you may want to fix:</span><br><span class="line">  </span><br><span class="line">1 : debmirror package is not installed, it will be required to manage debian deployments and repositories</span><br><span class="line">2 : fencing tools were not found, and are required to use the (optional) power management features. install cman or fence-agents to use them</span><br><span class="line">  </span><br><span class="line">Restart cobblerd and then run &apos;cobbler sync&apos; to apply changes.</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<ol start="4">
+<li><h4 id="配置dhcpd"><a href="#配置dhcpd" class="headerlink" title="配置dhcpd"></a>配置dhcpd</h4><ul>
+<li>配置dhcp服务(我这边两张网卡只有一张用于dhcp服务，一张用于上外网)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/cobbler/dhcp.template</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">subnet 10.10.1.0 netmask 255.255.255.0 &#123;</span><br><span class="line">     option routers             10.10.1.20;</span><br><span class="line">     option domain-name-servers 10.10.1.20;</span><br><span class="line">     option subnet-mask         255.255.255.0;</span><br><span class="line">     range dynamic-bootp        10.10.1.10 10.10.1.254;</span><br><span class="line">     default-lease-time         21600;</span><br><span class="line">     max-lease-time             43200;</span><br><span class="line">     next-server                $next_server;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>多网卡的情况下，需要指定具有相同内网的网卡来做dhcp</li>
+</ul>
+<p>eno33559296 就是我用来和虚拟机通信的网卡</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/lib/systemd/system/dhcpd.service /etc/systemd/system/</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/systemd/system/dhcpd.service</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=DHCPv4 Server Daemon</span><br><span class="line">Documentation=man:dhcpd(8) man:dhcpd.conf(5)</span><br><span class="line">Wants=network-online.target</span><br><span class="line">After=network-online.target</span><br><span class="line">After=time-sync.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line">ExecStart=/usr/sbin/dhcpd -f -cf /etc/dhcp/dhcpd.conf -user dhcpd -group dhcpd --no-pid eno33559296</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>重启cobbler 同步配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart cobblerd</span><br><span class="line">cobbler sync</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h4 id="导入镜像"><a href="#导入镜像" class="headerlink" title="导入镜像"></a>导入镜像</h4><ul>
+<li>先挂载centos镜像到服务器，然后再导入</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount  /dev/cdrom  /mnt/</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cobbler  import  --name=CentOS7-x86_64 --path=/mnt/  --arch=x86_64</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="制作centos-kickstart文件"><a href="#制作centos-kickstart文件" class="headerlink" title="制作centos kickstart文件"></a>制作centos kickstart文件</h4><p>可以参考我的github上面ks文件</p>
+</li>
+<li><h4 id="制作snippets系统初始化脚本"><a href="#制作snippets系统初始化脚本" class="headerlink" title="制作snippets系统初始化脚本"></a>制作snippets系统初始化脚本</h4><p>参考系统标准化使用的脚本</p>
+</li>
+<li><h4 id="配置开机启动菜单标签"><a href="#配置开机启动菜单标签" class="headerlink" title="配置开机启动菜单标签"></a>配置开机启动菜单标签</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/cobbler/pxe/pxedefault.template</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20200421225630564.png" alt="image-20200421225630564"></p>
+</li>
+<li><h4 id="创建虚拟机测试"><a href="#创建虚拟机测试" class="headerlink" title="创建虚拟机测试"></a>创建虚拟机测试</h4></li>
+</ol>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2020 herbiel<br></p>
+                <p class="copyright text-muted">关于本人 <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">herbiel</a> </p>
+                <!--<p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>-->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
