@@ -16,7 +16,11 @@
         <meta name="description" content="Nextcloud安装部署(LAMP)
 安装依赖1yum install -y epel-release yum-utils unzip curl wget bash-completion policycoreutils-python mlocate bzip2 unzip
 
-安装Apache123">
+
+
+
+
+安装Apach">
     
 
     <!--Author-->
@@ -34,7 +38,11 @@
         <meta property="og:description" content="Nextcloud安装部署(LAMP)
 安装依赖1yum install -y epel-release yum-utils unzip curl wget bash-completion policycoreutils-python mlocate bzip2 unzip
 
-安装Apache123">
+
+
+
+
+安装Apach">
     
 
     <!--Open Graph Site Name-->
@@ -215,14 +223,18 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <h2 id="Nextcloud安装部署-LAMP"><a href="#Nextcloud安装部署-LAMP" class="headerlink" title="Nextcloud安装部署(LAMP)"></a>Nextcloud安装部署(LAMP)</h2><ol>
 <li><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y epel-release yum-utils unzip curl wget bash-completion policycoreutils-python mlocate bzip2 unzip</span><br></pre></td></tr></table></figure>
+
+
 </li>
+</ol>
+<ol start="2">
 <li><h4 id="安装Apache"><a href="#安装Apache" class="headerlink" title="安装Apache"></a>安装Apache</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install -y httpd</span><br><span class="line">systemctl enable httpd.service</span><br><span class="line">systemctl start httpd.service</span><br></pre></td></tr></table></figure>
 </li>
 <li><h4 id="安装Mariadb"><a href="#安装Mariadb" class="headerlink" title="安装Mariadb"></a>安装Mariadb</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install mariadb-server -y</span><br><span class="line"></span><br><span class="line">systemctl start mariadb   </span><br><span class="line">systemctl enable mariadb</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">创建数据库</span><br><span class="line">create database nextcloud CHARACTER SET utf8 COLLATE utf8_general_ci;</span><br><span class="line">授权</span><br><span class="line">grant all privileges on nextcloud.* to test@localhost identified by &apos;Test123&apos;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">创建数据库</span><br><span class="line">create database nextcloud CHARACTER SET utf8 COLLATE utf8_general_ci;</span><br><span class="line">授权</span><br><span class="line">grant all privileges on nextcloud.* to test@localhost identified by &apos;Test123&apos;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
 </li>
-<li><h4 id="安装Php7-2"><a href="#安装Php7-2" class="headerlink" title="安装Php7.2"></a>安装Php7.2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#卸载老版本php</span><br><span class="line">yum remove php* php-common </span><br><span class="line"></span><br><span class="line"># 安装php7 yum源</span><br><span class="line">rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm</span><br><span class="line"></span><br><span class="line">yum install -y php72w php72w-cli php72w-common php72w-curl php72w-gd \</span><br><span class="line">php72w-mbstring php72w-mysqlnd php72w-process php72w-xml php72w-zip \</span><br><span class="line">php72w-opcache php72w-pecl-apcu php72w-intl php72w-pecl-redis</span><br><span class="line"></span><br><span class="line">systemctl restart httpd</span><br></pre></td></tr></table></figure>
+<li><h4 id="安装Php7-2"><a href="#安装Php7-2" class="headerlink" title="安装Php7.2"></a>安装Php7.2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#卸载老版本php</span><br><span class="line">yum remove php* php-common </span><br><span class="line"></span><br><span class="line"># 安装php7 yum源</span><br><span class="line">rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm</span><br><span class="line"></span><br><span class="line">yum install -y php72w php72w-cli php72w-common php72w-curl php72w-gd \</span><br><span class="line">php72w-mbstring php72w-mysqlnd php72w-process php72w-xml php72w-zip \</span><br><span class="line">php72w-opcache php72w-pecl-apcu php72w-intl php72w-pecl-redis mod_ssl</span><br><span class="line"></span><br><span class="line">systemctl restart httpd</span><br></pre></td></tr></table></figure>
 </li>
 <li><h4 id="安装Nextcloud"><a href="#安装Nextcloud" class="headerlink" title="安装Nextcloud"></a>安装Nextcloud</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd var/www/html/</span><br><span class="line">wget https://download.nextcloud.com/server/releases/nextcloud-18.0.4.zip</span><br><span class="line">unzip nextcloud-15.0.0.zip</span><br><span class="line">chown -R apache:apache /var/www/html/nextcloud</span><br></pre></td></tr></table></figure>
 </li>
